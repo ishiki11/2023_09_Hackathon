@@ -1,0 +1,48 @@
+
+DB
+
+CREATE TABLE Users(
+id serial primary key,
+mail varchar(256) UNIQUE,
+hashed_password varchar(256)not null,
+salt varchar(256)not null,
+username varchar(256)not null,
+rank_rate integer default 0,
+point integer default 0
+);
+
+
+CREATE TABLE Admin(
+id serial primary key,
+mail varchar(256) UNIQUE,
+hashed_password varchar(256)not null,
+salt varchar(256)not null
+);
+
+
+CREATE TABLE Music(
+id serial primary key,
+music_file varchar(256)not null,
+title varchar(256)not null,
+music_point integer not null
+);
+
+
+CREATE TABLE UserMusic(
+id serial primary key,
+musicId integer not null,
+userId integer not null
+);
+
+
+CREATE TABLE ToDo(
+id serial primary key,
+user_id integer not null,
+task varchar(256) not null,
+target_time varchar(256) not null,
+get_point integer not null,
+work_bgm integer not null,
+break_bgm integer not null,
+comp_flg integer default 0,
+priority integer not null
+);
