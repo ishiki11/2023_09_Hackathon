@@ -1,0 +1,6 @@
+{
+  "recommendations": [
+    "ms-python.autopep8", // pythonの自動整形ツール
+    "esbenp.prettier-vscode" // html/cssの自動整形
+  ]
+}

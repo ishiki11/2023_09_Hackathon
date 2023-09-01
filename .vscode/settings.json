@@ -1,0 +1,16 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode", // prettierでformatをする
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true, // 保存時に自動整形を行う
+    "editor.formatOnPaste": false, // ペースト時に自動整形を行わない
+    "editor.formatOnType": false // 入力後に自動整形を行わない
+  },
+  "prettier.singleQuote": true,
+  "prettier.tabWidth": 2,
+  "autopep8.args": ["--indent-size=2", "--max-line-length", "150"],
+  "editor.tabSize": 2, // インデントレベルは「2」
+  "files.insertFinalNewline": true, // ファイル保存時、最終行に改行を挿入する
+  "files.trimFinalNewlines": true, // ファイル保存時、最終行以降の空行を削除する
+  "files.trimTrailingWhitespace": true // ファイル保存時、末尾の空白をトリミングする
+}
