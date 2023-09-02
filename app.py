@@ -1,12 +1,20 @@
 from flask import Flask, render_template
+from flask_sqlalchemy import SQLAlchemy
 # viewsの読み込み
-from auth import user_auth
+from views.auth import auth
+
 
 # インスタンスの生成
 app = Flask(__name__)
+# # configファイルの読み込み
+# app.config.from_pyfile('config.py')
+# # dbとの接続
+# db = SQLAlchemy(app)
 
-# CRUD操作
-app.register_blueprint(user_auth)
+
+# Blueprintの利用
+# 利用者auth
+app.register_blueprint(auth)
 
 
 # Topページ
