@@ -12,5 +12,6 @@
   "editor.tabSize": 2, // インデントレベルは「2」
   "files.insertFinalNewline": true, // ファイル保存時、最終行に改行を挿入する
   "files.trimFinalNewlines": true, // ファイル保存時、最終行以降の空行を削除する
-  "files.trimTrailingWhitespace": true // ファイル保存時、末尾の空白をトリミングする
+  "files.trimTrailingWhitespace": true, // ファイル保存時、末尾の空白をトリミングする
+  "python.analysis.extraPaths": ["./views"]
 }
