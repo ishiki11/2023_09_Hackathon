@@ -1,16 +1,19 @@
 from flask import Flask, render_template
-from flask_sqlalchemy import SQLAlchemy
+from flask_migrate import Migrate
+# databaseとの接続
+from database import db
 # viewsの読み込み
 from views.auth import auth
-
+# modelsの読み込み
+from models import *
 
 # インスタンスの生成
 app = Flask(__name__)
-# # configファイルの読み込み
-# app.config.from_pyfile('config.py')
-# # dbとの接続
-# db = SQLAlchemy(app)
-
+# configファイルの読み込み
+app.config.from_pyfile('config.py')
+# dbとの接続
+db.init_app(app)
+migrate = Migrate(app, db)
 
 # Blueprintの利用
 # 利用者auth
