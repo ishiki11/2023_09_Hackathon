@@ -1,0 +1,5 @@
+# __pycache__ フォルダの除外
+__pycache__/
+
+# db接続
+config.py
