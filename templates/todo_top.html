@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{url_for('static', filename='/css/todo_top.css')}}">
+  <title>ToDOtop</title>
+</head>
+<body>
+<header>
+  <p>Pomodoro</p><a href="{{url_for('logout')}}">ログアウト</a>
+</header>
+<div class="todolist">
+<p>ようこそ{{username}}さん</p>
+{% for ToDo in todo%}
+<p>{{todo[0]}}</p>
+<p>目標 : {{todo[1]}}</p>
+{% if {{todo[2]}}==1%}
+<p>高</P>
+ {% elif {{todo[2]}}==2 %}
+ <p>中</p>
+ {% else %}
+ <p>低</p>
+ {% endif %}
+<p>{{todo[3]}}が作業中に流れる</p>
+<p>{{todo[4]}}が作業中に流れる</p>
+<a href="{{url_for('todo')}}">実行</a>
+<a href="{{url_for('todoedit')}}">編集</a>
+{% endfor %}
+<div>
+  <a href="{{url_for('register_todo')}}">ToDoの作成</a>
+</body>
+</html>
