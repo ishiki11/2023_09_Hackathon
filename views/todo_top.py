@@ -9,16 +9,17 @@ def todo_list():
   return render_template('todo_top.html',todo=todo)
 
 def todo_list():
-    sql = "SELECT * FROM ToDo"
-    try:
-        url = os.environ['DATABASE_URL']
-        connection = psycopg2.connect(url)
-        cursor = connection.cursor()
-        cursor.execute(sql,)
-        todo = cursor.fetchall()
-    except psycopg2.DatabaseError :
-        todo = "error"
-    finally :
-        cursor.close()
-        connection.close()
-        return todo
+  userid = 1 #セッションで持ってくる
+  sql = "SELECT * FROM ToDo where user_id = %s AND comp_flg = 0"
+  try:
+    url = os.environ['DATABASE_URL']
+    connection = psycopg2.connect(url)
+    cursor = connection.cursor()
+    cursor.execute(sql,(userid,))
+    todo = cursor.fetchall()
+  except psycopg2.DatabaseError :
+    todo = "error"
+  finally :
+    cursor.close()
+    connection.close()
+    return todo
