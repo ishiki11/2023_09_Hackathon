@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from database import db
 # viewsの読み込み
 from views.auth import auth
+from views.todo_top import todo_top
 # modelsの読み込み
 from models import *
 
@@ -18,6 +19,7 @@ migrate = Migrate(app, db)
 # Blueprintの利用
 # 利用者auth
 app.register_blueprint(auth)
+app.register_blueprint(todo_top)
 
 
 # Topページ
