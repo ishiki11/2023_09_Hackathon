@@ -8,6 +8,11 @@ def todo_list():
   userid = 1 #セッションで持ってくる
   todo = todo_list(userid)
   break_bgm = todo_break(userid)
+  get_todo=[[]]*len(todo)
+  for i in range(len(todo)):
+    get_todo[i]=todo[i]+break_bgm[i]
+  return render_template('todo_top.html',todo=get_todo)
+
   return render_template('todo_top.html',todo=todo,break_bgm=break_bgm)
 
 def todo_list(userid):
