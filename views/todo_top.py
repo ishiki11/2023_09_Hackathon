@@ -13,8 +13,6 @@ def todo_list():
     get_todo[i]=todo[i]+break_bgm[i]
   return render_template('todo_top.html',todo=get_todo)
 
-  return render_template('todo_top.html',todo=todo,break_bgm=break_bgm)
-
 def todo_list(userid):
   sql = "SELECT * FROM ToDo JOIN Music on ToDo.work_bgm = Music.id  WHERE user_id = %s AND comp_flg = 0"
   try:
