@@ -1,0 +1,25 @@
+@charset "utf-8";
+.todo-list{
+  display: flex;
+  border-style: solid solid none solid;
+  flex-wrap: wrap;
+  width: 804px;
+  margin-left: 50px;
+}
+.todo-list1,.todo-list3{
+  display: flex;
+  flex-wrap: wrap;
+  width: 200px;
+  border-style:none none solid none ;
+}
+.todo-list2{
+  width: 400px;
+  display: flex;
+  flex-wrap: wrap;
+  border-style: none solid solid;
+}
+.task{
+  font-size: 50px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
