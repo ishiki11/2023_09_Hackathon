@@ -8,6 +8,17 @@
 </head>
 <body>
  <div class="center">
+
+
+  {% if error != null %}
+  <p style="color:red">{{error}}</p>
+  {% endif %}
+
+  {% if a != null %}
+  <p style="color:red">{{a}}</p>
+  {% endif %}
+
+
     <form action="/register_exe" method="post">
 
      <p>メールアドレス<br>

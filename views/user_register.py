@@ -19,13 +19,19 @@ def register2():
 
 @user_register.route('/register_exe', methods=['POST'])
 def register_exe():
-    username = request.form.get('username')
     mail = request.form.get('mail')
     pw = request.form.get('pw')
+    pw2 = request.form.get('pw2')
+    username = request.form.get('username')
 
     if username == '' or pw == '' or mail == '':
         a = '入力されていない項目があります'
         return render_template('user_register.html',a=a)
+
+
+    if pw != pw2:
+        error = 'パスワードがちがいます'
+        return render_template('user_register.html', error=error)
 
     count = db.insert_user(mail, pw, username)
 
