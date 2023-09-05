@@ -7,8 +7,8 @@ todo_register = Blueprint('todo_register', __name__)
 def todo_register():
   music = userMusic()
   return render_template('index.html', music=music)
-@todo_register.route('/register_exe',  methods=['POST'])
-def register_exe():
+@todo_register.route('/todo_register_exe',  methods=['POST'])
+def todo_register_exe():
   userid = 1 #セッションで持ってくる
   task = request.form.get('task')
   target_time = request.form.get('target_time')
