@@ -25,7 +25,7 @@ def todo_list(userid):
     connection.close()
     return todo
 def todo_break(userid):
-  sql = "SELECT Msic.title as break_title FROM ToDo JOIN music on ToDo.break_bgm = Music.id  WHERE user_id = 1 AND comp_flg = 0"
+  sql = "SELECT Music.title as break_title FROM ToDo JOIN music on ToDo.break_bgm = Music.id  WHERE user_id = 1 AND comp_flg = 0"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
