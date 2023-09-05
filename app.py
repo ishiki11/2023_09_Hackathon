@@ -5,6 +5,7 @@ from database import db
 # viewsの読み込み
 from views.auth import auth
 from views.todo_top import todo_top
+from views.todo_register import todo_register
 # modelsの読み込み
 from models import *
 
@@ -20,6 +21,7 @@ migrate = Migrate(app, db)
 # 利用者auth
 app.register_blueprint(auth)
 app.register_blueprint(todo_top)
+app.register_blueprint(todo_register)
 
 
 # Topページ
