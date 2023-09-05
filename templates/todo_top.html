@@ -3,31 +3,37 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="{{url_for('static', filename='/css/todo_top.css')}}">
+  <link rel="stylesheet" href="../static/css/todo_top.css">
   <title>ToDOtop</title>
 </head>
 <body>
 <header>
-  <p>Pomodoro</p><a href="{{url_for('logout')}}">ログアウト</a>
+  <p>Pomodoro</p><p>ログアウト</p>
 </header>
-<div class="todolist">
 <p>ようこそ{{username}}さん</p>
+<div class="todo-list">
 {% for ToDo in todo%}
-<p>{{todo[0]}}</p>
-<p>目標 : {{todo[1]}}</p>
-{% if {{todo[2]}}==1%}
-<p>高</P>
- {% elif {{todo[2]}}==2 %}
- <p>中</p>
- {% else %}
- <p>低</p>
+<div class="todo-list1">
+<p class="task">{{ToDo[2]}}</p>
+<p>目標 : {{ToDo[3]}}</p>
+{% if ToDo[9]==1%}
+  <p>高</P>
+ {% elif ToDo[9]==2 %}
+  <p>中</p>
+ {% else: %}
+  <p>低</p>
  {% endif %}
-<p>{{todo[3]}}が作業中に流れる</p>
-<p>{{todo[4]}}が作業中に流れる</p>
-<a href="{{url_for('todo')}}">実行</a>
-<a href="{{url_for('todoedit')}}">編集</a>
+  </div>
+  <div class="todo-list2">
+<p>{{ToDo[5]}}が作業中に流れる</p>
+<p>{{ToDo[6]}}が休憩中に流れる</p>
+  </div>
+  <div class="todo-list3">
+<p>実行</p>
+<p>編集</p>
+  </div>
 {% endfor %}
-<div>
-  <a href="{{url_for('register_todo')}}">ToDoの作成</a>
+</div>
+  <p>ToDoの作成</p>
 </body>
 </html>
