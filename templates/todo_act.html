@@ -20,14 +20,14 @@
     <div class="content">
       <div>実行中のToDO</div>
       <div class="flex">
-        <div>ガマガエルのものまね</div>
+        <div>{{ data[0] }}</div>
         <div class="circle"></div>
         <div class="act">実行中</div>
       </div>
 
       <div class="flex">
         <div>目標時間：</div>
-        <div>時間</div>
+        <div>{{ data[1] }}</div>
         <div class="state">
           <div class="circle"></div>
           <div class="break">休憩中</div>
@@ -45,11 +45,11 @@
 
       <div class="flex">
         <div>再生中の曲：</div>
-        <div>{{ file_name }}</div>
+        <div>{{ data[2] }}</div>
         <div></div>
       </div>
       <audio id="audio" loop autoplay>
-        <source src="{{ sound }}" type="audio/wav" />
+        <source src="{{ data[3] }}" type="audio/wav" />
         <p>
           このブラウザーはaudio要素に対応していません。<a href="{{ sound }}"
             >音声ファイルへのリンク</a
@@ -67,23 +67,23 @@
         </tr>
       </table>
       <label>
-        音量<input type="range" min="0" max="1" step="0.01" id="volumeRange"/>
+        音量<input type="range" min="0" max="1" step="0.01" id="volumeRange" />
       </label>
       <audio id="music" controls autoplay loop>
-        <source src="static/music/wonderland.wav" type="audio/mpeg">
+        <source src="static/music/wonderland.wav" type="audio/mpeg" />
         Your browser does not support the audio element.
-    </audio>
+      </audio>
 
-    <script>
+      <script>
         // 音楽要素を取得
         var music = document.getElementById('music');
 
         // 再生が終了したら再生を再開
-        music.addEventListener('ended', function() {
-            this.currentTime = 0;
-            this.play();
+        music.addEventListener('ended', function () {
+          this.currentTime = 0;
+          this.play();
         });
-    </script>
+      </script>
 
       <div class="button flex">
         <button>中断</button>
