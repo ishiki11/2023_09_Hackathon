@@ -8,7 +8,10 @@ def todo_list():
   userid = 1 #セッションで持ってくる
   todo = todo_list(userid)
   break_bgm = todo_break(userid)
-  return render_template('todo_top.html',todo=todo,break_bgm=break_bgm)
+  get_todo=[[]]*len(todo)
+  for i in range(len(todo)):
+    get_todo[i]=todo[i]+break_bgm[i]
+  return render_template('todo_top.html',todo=get_todo)
 
 def todo_list(userid):
   sql = "SELECT * FROM ToDo JOIN Music on ToDo.work_bgm = Music.id  WHERE user_id = %s AND comp_flg = 0"

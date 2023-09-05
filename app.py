@@ -1,24 +1,29 @@
-from flask import Flask, render_template
-from flask_migrate import Migrate
+from flask import Flask, render_template, Blueprint
+# from flask_migrate import Migrate
 # databaseとの接続
 from database import db
 # viewsの読み込み
 from views.auth import auth
+from views.user_register import user_register
 from views.todo_top import todo_top
 # modelsの読み込み
 from models import *
-
+import string, random
+from views.user_register import user_register
 # インスタンスの生成
 app = Flask(__name__)
-# configファイルの読み込み
-app.config.from_pyfile('config.py')
-# dbとの接続
-db.init_app(app)
-migrate = Migrate(app, db)
+app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
+
+# # configファイルの読み込み
+# app.config.from_pyfile('config.py')
+# # dbとの接続
+# db.init_app(app)
+# migrate = Migrate(app, db)
 
 # Blueprintの利用
 # 利用者auth
 app.register_blueprint(auth)
+app.register_blueprint(user_register)
 app.register_blueprint(todo_top)
 
 
