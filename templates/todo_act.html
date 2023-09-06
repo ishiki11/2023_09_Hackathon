@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -21,7 +21,7 @@
       <div>実行中のToDO</div>
       <div class="flex">
         <div>{{ data[0] }}</div>
-        <div class="circle"></div>
+        <div class="circle" id="work-circle"></div>
         <div class="act">実行中</div>
       </div>
 
@@ -29,24 +29,24 @@
         <div>目標時間：</div>
         <div>{{ data[1] }}</div>
         <div class="state">
-          <div class="circle"></div>
+          <div class="circle" id="break-circle"></div>
           <div class="break">休憩中</div>
         </div>
       </div>
 
       <div class="flex">
         <div>経過時間：</div>
-        <div id="act-time"></div>
+        <div id="total-time">00秒</div>
       </div>
 
       <div class="flex">
-        <div>休憩までの時間：</div>
-        <div id="for-breaktime"></div>
+        <div id="break-text">休憩までの時間：</div>
+        <div id="for-breaktime">00秒</div>
       </div>
 
       <div class="flex">
         <div>再生中の曲：</div>
-        <div>{{ data[2] }}</div>
+        <div id="play-music">{{ data[4] }}</div>
         <div></div>
       </div>
       <audio id="audio" loop autoplay>
@@ -61,10 +61,14 @@
         音量<input type="range" min="0" max="1" step="0.01" id="volumeRange" />
       </label>
       <div class="button flex">
-        <button>中断</button>
-        <button>完了</button>
+        <button class="break-btn">中断</button>
+        <button class="finish-btn" onclick="finishBtn()">完了</button>
       </div>
     </div>
+    <script>
+      var todoData = {{ data | tojson | safe }};
+    </script>
+
     <script src="/static/js/todo_act.js"></script>
   </body>
 </html>

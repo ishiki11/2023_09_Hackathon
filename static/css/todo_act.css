@@ -54,6 +54,9 @@ body {
   border: 1px #000 solid;
   border-radius: 50%;
 }
+#work-circle {
+  background-color: green;
+}
 
 .logout {
   color: black;
