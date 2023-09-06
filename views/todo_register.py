@@ -25,13 +25,13 @@ def todo_register_exe():
     music = userMusic(userid)
     return render_template('todo_register.html', error=error, music=music)
 
-def todo_register(todo):
+def todo_register(todo_inf):
   sql = "INSERT INTO ToDo VALUES (default, %s, %s, %s, 0, %s, %s, 0, %s)"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
     cursor = connection.cursor()
-    cursor.execute(sql, (todo[0],todo[1],todo[2],todo[3],todo[4],todo[5]))
+    cursor.execute(sql, (todo_inf[0],todo_inf[1],todo_inf[2],todo_inf[3],todo_inf[4],todo_inf[5]))
     count = cursor.rowcount
     connection.commit()
   except psycopg2.DatabaseError:
