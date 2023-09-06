@@ -46,3 +46,26 @@ break_bgm integer not null,
 comp_flg integer default 0,
 priority integer not null
 );
+
+------------↓musictableの情報追加----------------------
+
+insert into music(music_file,title,music_point)
+values('/static/music/wonderland.wav','それゆけワンダーランド',0);
+insert into music(music_file,title,music_point)
+values('/static/music/champagne.wav','シャンパン・ビート',0);
+insert into music(music_file,title,music_point)
+values('/static/music/appare.wav','天晴',0);
+insert into music(music_file,title,music_point)
+values('/static/music/yamai.wav','五月の病',100);
+insert into music(music_file,title,music_point)
+values('/static/music/gunjo.wav','群青のリアル',100);
+insert into music(music_file,title,music_point)
+values('/static/music/gradient.wav','グラディエント',300);
+insert into music(music_file,title,music_point)
+values('/static/music/jinsei.wav','人生、踊らにゃ',300);
+insert into music(music_file,title,music_point)
+values('/static/music/kaze_ga_naku.wav','風が鳴く',300);
+insert into music(music_file,title,music_point)
+values('/static/music/kaerimichi.wav','いつもの帰り道',500);
+insert into music(music_file,title,music_point)
+values('/static/music/night.wav','ナイトパレード',500);
