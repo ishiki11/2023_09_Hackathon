@@ -46,7 +46,7 @@ def userMusic(userid):
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
     cursor = connection.cursor()
-    cursor.execute(sql,(userid))
+    cursor.execute(sql,(userid,))
     music = cursor.fetchall()
   except psycopg2.DatabaseError :
     music = "error"
