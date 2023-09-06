@@ -6,7 +6,7 @@ from database import db
 from views.auth import auth
 from views.user_register import user_register
 from views.todo_top import todo_top
-from views.todo_register import todo_register
+from views.todo_register import todo_reg
 # modelsの読み込み
 from models import *
 import string, random
@@ -26,7 +26,7 @@ app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 app.register_blueprint(auth)
 app.register_blueprint(user_register)
 app.register_blueprint(todo_top)
-app.register_blueprint(todo_register)
+app.register_blueprint(todo_reg)
 
 
 # Topページ

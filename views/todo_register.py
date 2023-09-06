@@ -1,14 +1,14 @@
 from flask import Flask, Blueprint, render_template, redirect, url_for, request
 import os, psycopg2
-todo_register = Blueprint('todo_register', __name__)
+todo_reg = Blueprint('todo_reg', __name__)
 
 
-@todo_register.route('/todo_register', methods=['GET'])
+@todo_reg.route('/todo_register', methods=['GET'])
 def todo_register():
   userid = 1 #セッションで持ってくる
   music = userMusic(userid)
   return render_template('todo_register.html', music=music)
-@todo_register.route('/todo_register_exe',  methods=['POST'])
+@todo_reg.route('/todo_register_exe',  methods=['POST'])
 def todo_register_exe():
   userid = 1 #セッションで持ってくる
   task = request.form.get('task')
