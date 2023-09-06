@@ -1,0 +1,15 @@
+.center {
+  margin: auto;
+  width: 50%;
+}
+.center input:not([type="button"]) {
+  width: 100%;
+  padding: 5px;
+}
+.center input[type="button"] {
+  padding: 10px;
+  width: 100px;
+  margin: 50px;
+  margin-left: 40%;
+  border-radius:10px;
+}
