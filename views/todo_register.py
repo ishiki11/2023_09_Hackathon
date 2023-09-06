@@ -19,7 +19,7 @@ def todo_register_exe():
   todo_inf = [userid,task,target_time,work_bgm,break_bgm,priority]
   count = todo_register(todo_inf)
   if count == 1:
-    return redirect(url_for('todo_top'))
+    return redirect(url_for('todo_top.todo_list'))
   else:
     error = '登録に失敗しました。'
     music = userMusic(userid)
@@ -41,7 +41,7 @@ def todo_register(todo_inf):
     connection.close()
     return count
 def userMusic(userid):
-  sql = "SELECT * FROM UserMusic JONI Music on UserMusic.MusicId = Music.id where userId = %s"
+  sql = "SELECT * FROM UserMusic JOIN Music on UserMusic.MusicId = Music.id where userId = %s"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
