@@ -7,7 +7,7 @@ todo_register = Blueprint('todo_register', __name__)
 def todo_register():
   userid = 1 #セッションで持ってくる
   music = userMusic(userid)
-  return render_template('index.html', music=music)
+  return render_template('todo_register.html', music=music)
 @todo_register.route('/todo_register_exe',  methods=['POST'])
 def todo_register_exe():
   userid = 1 #セッションで持ってくる
@@ -23,7 +23,7 @@ def todo_register_exe():
   else:
     error = '登録に失敗しました。'
     music = userMusic(userid)
-    return render_template('ad_reg.html', error=error, music=music)
+    return render_template('todo_register.html', error=error, music=music)
 
 def todo_register(todo):
   sql = "INSERT INTO ToDo VALUES (default, %s, %s, %s, 0, %s, %s, 0, %s)"
