@@ -36,11 +36,12 @@
 
       <div class="flex">
         <div>経過時間：</div>
-        <div>時間</div>
+        <div id="act-time"></div>
       </div>
 
       <div class="flex">
-        <div class="">休憩までの時間：</div>
+        <div>休憩までの時間：</div>
+        <div id="for-breaktime"></div>
       </div>
 
       <div class="flex">
@@ -49,42 +50,16 @@
         <div></div>
       </div>
       <audio id="audio" loop autoplay>
-        <source src="{{ data[3] }}" type="audio/wav" />
+        <source src="{{ data[5] }}" type="audio/wav" />
         <p>
-          このブラウザーはaudio要素に対応していません。<a href="{{ sound }}"
+          このブラウザーはaudio要素に対応していません。<a href="{{ data[5] }}"
             >音声ファイルへのリンク</a
           >から御覧ください。
         </p>
       </audio>
-      <table>
-        <tr>
-          <th>音声全体の時間</th>
-          <td id="durationDisplay">--:--</td>
-        </tr>
-        <tr>
-          <th>現在の再生時間</th>
-          <td id="currentTimeDisplay">--:--</td>
-        </tr>
-      </table>
       <label>
         音量<input type="range" min="0" max="1" step="0.01" id="volumeRange" />
       </label>
-      <audio id="music" controls autoplay loop>
-        <source src="static/music/wonderland.wav" type="audio/mpeg" />
-        Your browser does not support the audio element.
-      </audio>
-
-      <script>
-        // 音楽要素を取得
-        var music = document.getElementById('music');
-
-        // 再生が終了したら再生を再開
-        music.addEventListener('ended', function () {
-          this.currentTime = 0;
-          this.play();
-        });
-      </script>
-
       <div class="button flex">
         <button>中断</button>
         <button>完了</button>
