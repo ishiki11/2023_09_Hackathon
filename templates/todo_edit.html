@@ -4,18 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../static/css/todo_register.css">
-  <title>ToDo新規登録</title>
+  <title>ToDo編集</title>
 </head>
 <body>
   {% if error != null %}
 <p>{{error}}</p>
 {% endif %}
 <div class="register_form">
-    <form action="/todo_register_exe" method="post">
+    <form action="/todo_edit_exe/{{todo[0][0]}}" method="post">
     <p>ToDoの内容</p>
-    <input type="text" name="task">
+    <input type="text" placeholder="{{todo[0][2]}}" name="task">
     <p>目標時間</p>
-      <input type="text" placeholder="例)1時間" name="target_time">
+      <input type="text" placeholder="{{todo[0][3]}}" name="target_time">
       <p>作業中のBGM</p>
       <select name="work_bgm">
         {%for buyed_music in music%}
@@ -34,7 +34,7 @@
         <option value="1">中</option>
         <option value="2">低</option>
       </select>
-      <input type="submit"value="登録">
+      <input type="submit"value="編集">
     </form>
     </div>
 </body>
