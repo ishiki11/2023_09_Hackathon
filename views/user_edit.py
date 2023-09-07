@@ -7,8 +7,14 @@ user_edit = Blueprint('user_edit', __name__, '/user_edit')
 # ログイン処理
 @user_edit.route('/user_edit')
 def edit():
+
   # print("A")
-  id = session['id']
+
+  # if 'id' in session:
+  #       return render_template('edit.html')
+  # else :
+  #       return redirect(url_for('login.index'))
+
 
 
   row = db.id_select_user(session['id'])
