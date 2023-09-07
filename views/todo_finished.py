@@ -11,10 +11,10 @@ def todo_finished_list():
   get_todo=[[]]*len(todo)
   for i in range(len(todo)):
     get_todo[i]=todo[i]+break_bgm[i]
-  return render_template('todo_top.html',todo=get_todo)
+  return render_template('todo_finished',todo=get_todo)
 
 def todo_finished_list(userid):
-  sql = "SELECT * FROM ToDo JOIN Music on ToDo.work_bgm = Music.id  WHERE user_id = %s AND comp_flg = 0"
+  sql = "SELECT * FROM ToDo JOIN Music on ToDo.work_bgm = Music.id  WHERE user_id = %s AND comp_flg = 1"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
@@ -28,7 +28,7 @@ def todo_finished_list(userid):
     connection.close()
     return todo
 def todo_finished_break(userid):
-  sql = "SELECT Music.title as break_title FROM ToDo JOIN music on ToDo.break_bgm = Music.id  WHERE user_id = 1 AND comp_flg = 0"
+  sql = "SELECT Music.title as break_title FROM ToDo JOIN music on ToDo.break_bgm = Music.id  WHERE user_id = 1 AND comp_flg = 1"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
