@@ -20,6 +20,18 @@ body {
   font-size: 1.5rem;
   right: 5rem;
 }
+/* 戻るボタン(ログイン前) */
+.back{
+  position: absolute;
+  font-size: 1.5rem;
+  left: 5rem;
+}
+/* 戻るボタン(ログイン後) */
+.todo_top{
+  position: absolute;
+  font-size: 1.5rem;
+  left: 5rem;
+}
 
 /* Pomodoro */
 .title {

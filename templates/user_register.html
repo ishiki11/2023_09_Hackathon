@@ -4,9 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/css/user_register.css">
+  <link rel="stylesheet" href="static/css/header.css">
   <title>新規登録</title>
 </head>
 <body>
+  <div class="header">
+    <h1 class="title">Pomodoro</h1>
+    <a href="/logout" class="logout">ログアウト</a>
+    <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+    <a href="/todo_top"class="todo_top">戻る</a>
+  </div>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+    rel="stylesheet"
+  />
+
  <div class="center">
     <form action="/register_exe" method="post">
 
