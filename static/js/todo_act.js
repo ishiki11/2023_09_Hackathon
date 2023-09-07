@@ -18,7 +18,7 @@ let breakCircle = document.getElementById('break-circle');
 //（音声ファイル読み込み前に情報を取得しようとしても正常に取得できないので注意）
 audio.addEventListener('loadedmetadata', function () {
   //音量調節レンジ初期設定（inputの初期値と表示の値）
-  audio.volume = 0.3;
+  audio.volume = 0;
   volumeRange.value = audio.volume;
   //音量調節レンジの動作
   volumeRange.addEventListener('input', function () {
@@ -26,6 +26,40 @@ audio.addEventListener('loadedmetadata', function () {
     audio.volume = volumeRange.value;
   });
 });
+
+// フェードイン
+function fadeIn() {
+  const targetVolume = 0.5; // フェードインで変化する音量
+  const fadeDuration = 10000; // フェードにかかる時間（ミリ秒）
+  const interval = 100; // フェードの更新間隔（ミリ秒）
+  const step = (targetVolume - audio.volume) / (fadeDuration / interval);
+  let cnt = fadeDuration / interval;
+  const fadeInInterval = setInterval(() => {
+    audio.volume += step;
+    volumeRange.value = audio.volume;
+    cnt--;
+    if (cnt == 0 || audio.volume >= 1) {
+      clearInterval(fadeInInterval);
+    }
+  }, interval);
+}
+
+// フェードアウト
+function fadeOut() {
+  const targetVolume = 0; // フェードアウト後の目標音量
+  const fadeDuration = 10000; // フェードにかかる時間（ミリ秒）
+  const interval = 100; // フェードの更新間隔（ミリ秒）
+  const step = (targetVolume - audio.volume) / (fadeDuration / interval);
+  let cnt = fadeDuration / interval;
+  const fadeOutInterval = setInterval(() => {
+    audio.volume += step;
+    volumeRange.value = audio.volume;
+    cnt--;
+    if (cnt === 0 || audio.volume <= 0) {
+      clearInterval(fadeOutInterval);
+    }
+  }, interval);
+}
 
 let isBreak = false; //休憩中か
 /**
@@ -43,6 +77,7 @@ function switchMusic() {
   audio.querySelector('source').setAttribute('src', MusicSrc);
   // <audio>要素を再読み込みして新しい音楽を再生
   audio.load();
+  fadeIn();
 }
 
 /**
@@ -62,6 +97,7 @@ function switchCircle() {
  * タイマー機能
  */
 function timerStart() {
+  fadeIn();
   startTotalTimer(); // トータル時間の計測
   breakTimer(); // 休憩までの時間
 }
@@ -88,6 +124,9 @@ function breakTimer() {
   breakInterval = setInterval(() => {
     forSeconds--;
     BreakTime.textContent = formatTime(forSeconds);
+    if (forSeconds === 10) {
+      fadeOut();
+    }
     if (forSeconds === 0) {
       if (isBreak) {
         //休憩の時
@@ -110,7 +149,7 @@ function breakTimer() {
 function setForBreak() {
   //休憩までの時間
   forSeconds = 25 * 60;
-  // forSeconds = 10; // 発表用
+  forSeconds = 20; // 発表用
   breakText.textContent = '休憩までの時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
@@ -119,7 +158,7 @@ function setForBreak() {
 function setRestBreak() {
   // 残りの休憩時間
   forSeconds = 5 * 60;
-  // forSeconds = 5; // 発表用
+  forSeconds = 20; // 発表用
   breakText.textContent = '残りの休憩時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
