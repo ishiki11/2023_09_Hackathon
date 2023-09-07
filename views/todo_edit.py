@@ -9,6 +9,7 @@ def todo_editer():
   music = userMusic(userid)
   todo = todo_search(todoId)
   return render_template('todo_edit.html', music=music, todo=todo)
+@todo_edit.route('/todo_edit_exe',  methods=['POST'])
 def todo_edit_exe():
   userid = 1 #セッションで持ってくる
   task = request.form.get('task')
@@ -37,7 +38,7 @@ def todo_edit_exe(edit_info):
     count = cursor.rowcount
     connection.commit()
   except psycopg2.DatabaseError :
-    todo = "error"
+    count = 0
   finally :
     cursor.close()
     connection.close()
