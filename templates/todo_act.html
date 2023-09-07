@@ -3,7 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/static/css/todo_act.css" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/todo_act.css') }}"
+    />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -61,8 +64,8 @@
         音量<input type="range" min="0" max="1" step="0.01" id="volumeRange" />
       </label>
       <div class="button flex">
-        <button class="break-btn">中断</button>
-        <button class="finish-btn" onclick="finishBtn()">完了</button>
+        <a href="{{ url_for('todo_top.todo_list') }}">中断</a>
+        <button class="btn finish-btn" onclick="finishBtn()">完了</button>
       </div>
     </div>
     <script>

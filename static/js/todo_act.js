@@ -32,11 +32,11 @@ let isBreak = false; //休憩中か
  */
 function switchMusic() {
   if (!isBreak) {
-    var MusicSrc = todoData[5]; //作業音楽に切り替え
-    playMusic.textContent = todoData[4];
+    var MusicSrc = todoData[6]; //作業音楽に切り替え
+    playMusic.textContent = todoData[5];
   } else {
-    var MusicSrc = todoData[3]; //休憩音楽に切り替え
-    playMusic.textContent = todoData[2];
+    var MusicSrc = todoData[4]; //休憩音楽に切り替え
+    playMusic.textContent = todoData[3];
   }
   // srcを変える
   audio.querySelector('source').setAttribute('src', MusicSrc);
@@ -109,7 +109,7 @@ function breakTimer() {
 function setForBreak() {
   //休憩までの時間
   forSeconds = 25 * 60;
-  forSeconds = 10; // 発表用
+  // forSeconds = 10; // 発表用
   breakText.textContent = '休憩までの時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
@@ -118,7 +118,7 @@ function setForBreak() {
 function setRestBreak() {
   // 残りの休憩時間
   forSeconds = 5 * 60;
-  forSeconds = 5; // 発表用
+  // forSeconds = 5; // 発表用
   breakText.textContent = '残りの休憩時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
@@ -143,26 +143,31 @@ function formatTime(seconds) {
   }
 }
 
-// 完了ボタンの削除
+// 完了ボタンの押された時
 function finishBtn() {
   stopTime();
   audio.pause();
 
-  const seconds = totalSeconds;
-  const data = { seconds, todoData };
+  seconds = totalSeconds;
+  todo_id = todoData[0];
+  const data = { seconds, todo_id };
 
   fetch('/todo_act', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
+    headers: { 'Content-type': 'application/json; charset=utf-8' },
     body: JSON.stringify(data),
   })
-    .then((response) => response.json())
-    .then((responseData) => {
-      console.log(responseData.message);
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      console.log(data.message);
     })
     .catch((error) => {
       console.error('Error', error);
     });
+}
+
+function cancelBtn() {
+  console.log('キャンセル');
 }
