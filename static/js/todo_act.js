@@ -18,6 +18,7 @@ let breakCircle = document.getElementById('break-circle');
 //（音声ファイル読み込み前に情報を取得しようとしても正常に取得できないので注意）
 audio.addEventListener('loadedmetadata', function () {
   //音量調節レンジ初期設定（inputの初期値と表示の値）
+  audio.volume = 0.3;
   volumeRange.value = audio.volume;
   //音量調節レンジの動作
   volumeRange.addEventListener('input', function () {
@@ -158,6 +159,9 @@ function finishBtn() {
     body: JSON.stringify(data),
   })
     .then((response) => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
       return response.json();
     })
     .then((data) => {
@@ -166,8 +170,4 @@ function finishBtn() {
     .catch((error) => {
       console.error('Error', error);
     });
-}
-
-function cancelBtn() {
-  console.log('キャンセル');
 }

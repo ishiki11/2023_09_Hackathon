@@ -10,7 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Italianno&display=swap"
       rel="stylesheet"
     />
     <title>ToDo実行</title>
@@ -21,37 +21,47 @@
       <a href="/logout" class="logout">ログアウト</a>
     </div>
     <div class="content">
-      <div>実行中のToDO</div>
-      <div class="flex">
-        <div>{{ data[1] }}</div>
-        <div class="circle" id="work-circle"></div>
-        <div class="act">実行中</div>
-      </div>
+      <div class="sub-title">実行中のToDO</div>
+      <table class="table">
+        <tr>
+          <td colspan="2"><div class="item1">{{ data[1] }}</div></td>
+          <td class="state">
+            <div class="state flex">
+              <div class="circle" id="work-circle"></div>
+              <div class="act">実行中</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item1">目標時間：</div>
+          </td>
+          <td><div class="item2">{{ data[2] }}</div></td>
+          <td class="state">
+            <div class="flex">
+              <div class="circle" id="break-circle"></div>
+              <div class="break">休憩中</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item1">経過時間：</div>
+          </td>
+          <td>
+            <div id="total-time" class="item2">00秒</div>
+          </td>
+        </tr>
+        <tr>
+          <td><div id="break-text" class="item1">休憩までの時間：</div></td>
+          <td><div id="for-breaktime" class="item2">00秒</div></td>
+        </tr>
+        <tr>
+          <td><div class="item1">再生中の曲：</div></td>
+          <td class><div id="play-music" class="item2">{{ data[5] }}</div></td>
+        </tr>
+      </table>
 
-      <div class="flex">
-        <div>目標時間：</div>
-        <div>{{ data[2] }}</div>
-        <div class="state">
-          <div class="circle" id="break-circle"></div>
-          <div class="break">休憩中</div>
-        </div>
-      </div>
-
-      <div class="flex">
-        <div>経過時間：</div>
-        <div id="total-time">00秒</div>
-      </div>
-
-      <div class="flex">
-        <div id="break-text">休憩までの時間：</div>
-        <div id="for-breaktime">00秒</div>
-      </div>
-
-      <div class="flex">
-        <div>再生中の曲：</div>
-        <div id="play-music">{{ data[5] }}</div>
-        <div></div>
-      </div>
       <audio id="audio" loop autoplay>
         <source src="{{ data[6] }}" type="audio/wav" />
         <p>
@@ -64,8 +74,8 @@
         音量<input type="range" min="0" max="1" step="0.01" id="volumeRange" />
       </label>
       <div class="button flex">
-        <a href="{{ url_for('todo_top.todo_list') }}">中断</a>
-        <button class="btn finish-btn" onclick="finishBtn()">完了</button>
+        <a href="{{ url_for('todo_top.todo_list') }}" class="cancel">中断</a>
+        <button class="finish-btn" onclick="finishBtn()">完了</button>
       </div>
     </div>
     <script>
