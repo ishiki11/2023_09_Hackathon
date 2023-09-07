@@ -5,6 +5,7 @@ from views.user_register import user_register
 from views.todo_top import todo_top
 from views.todo_register import todo_reg
 from views.todo_edit import todo_edit
+from views.todo_finished import todo_finished
 import string, random
 # インスタンスの生成
 app = Flask(__name__)
@@ -16,6 +17,7 @@ app.register_blueprint(user_register)
 app.register_blueprint(todo_top)
 app.register_blueprint(todo_reg)
 app.register_blueprint(todo_edit)
+app.register_blueprint(todo_finished)
 
 
 # Topページ
