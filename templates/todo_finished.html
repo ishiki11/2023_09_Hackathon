@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/todo_top.css">
+    <title>ToDOtop</title>
+  </head>
+  <body>
+    <header>
+      <p>Pomodoro</p><p>ログアウト</p>
+    </header>
+<div class="todo-list">
+{% for ToDo in todo%}
+<div class="todo-list1">
+<p class="task">{{ToDo[2]}}</p>
+<p>目標 : {{ToDo[3]}}</p>
+  </div>
+  <div class="todo-list2">
+<p class="bgm">{{ToDo[4]}}ポイントを獲得</p>
+  </div>
+  <div class="todo-list3">
+<a href="/todo_act/{{ToDo[0]}}">再実行</a>
+  </div>
+{% endfor %}
+</div>
+</body>
+</html>
