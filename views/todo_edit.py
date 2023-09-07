@@ -44,7 +44,7 @@ def todo_edit_exe(edit_info):
     connection.close()
     return count
 def todo_search(todoid):
-  sql = "SELECT * FROM ToDo where id = %s"
+  sql = "SELECT * FROM todo where id = %s"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
@@ -58,7 +58,7 @@ def todo_search(todoid):
     connection.close()
     return todo
 def userMusic(userid):
-  sql = "SELECT * FROM UserMusic JONI Music on UserMusic.MusicId = Music.id where userId = %s"
+  sql = "SELECT * FROM UserMusic JOIN Music on UserMusic.MusicId = Music.id where userId = %s"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
