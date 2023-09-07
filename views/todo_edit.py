@@ -9,15 +9,15 @@ def todo_editer(param):
   music = userMusic(userid)
   todo = todo_search(todoId)
   return render_template('todo_edit.html', music=music, todo=todo)
-@todo_edit.route('/todo_edit_exe',  methods=['POST'])
-def todo_edit_exe():
+@todo_edit.route('/todo_edit_exe/<param>',  methods=['POST'])
+def todo_edit_exe(param):
   userid = 1 #セッションで持ってくる
   task = request.form.get('task')
   target_time = request.form.get('target_time')
   work_bgm = request.form.get('work_bgm')
   break_bgm = request.form.get('break_bgm')
   priority = request.form.get('priority')
-  todoId = request.form.get('todoid')
+  todoId = param
   edit_inf = [task,target_time,work_bgm,break_bgm,priority,todoId]
   count = todo_edit_exe(edit_inf)
   if count == 1:
