@@ -6,6 +6,7 @@ from views.user_register import user_register
 from views.todo_top import todo_top
 from views.todo_act import todo_act
 from views.todo_register import todo_reg
+from views.todo_edit import todo_edit
 # 関数のインポート
 import string
 import random
@@ -19,6 +20,7 @@ app.register_blueprint(user_register)  # 新規登録
 app.register_blueprint(todo_top)  # todo一覧
 app.register_blueprint(todo_act)  # todo実行
 app.register_blueprint(todo_reg)  # todo登録
+app.register_blueprint(todo_edit)
 
 
 # Topページ

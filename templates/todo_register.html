@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,60 +11,31 @@
 <p>{{error}}</p>
 {% endif %}
 <div class="register_form">
-    <form actin="/register_exe" method="post">
-    <input type="hidden" name="userid" value="userid">
+    <form action="/todo_register_exe" method="post">
     <p>ToDoの内容</p>
     <input type="text" name="task">
     <p>目標時間</p>
-    <select name="target_time">
-      <option value="1">1時間</option>
-      <option value="1.5">1時間半</option>
-      <option value="2">2時間</option>
-      <option value="2.5">2時間半</option>
-      <option value="3">3時間</option>
-      <option value="3.5">3時間半</option>
-      <option value="4">4時間</option>
-      <option value="4.5">4時間半</option>
-      <option value="5">5時間</option>
-      <option value="5.5">5時間半</option>
-      <option value="6">6時間</option>
-      <option value="6.5">6時間半</option>
-      <option value="7">7時間</option>
-      </select>
+      <input type="text" placeholder="例)1時間" name="target_time">
       <p>作業中のBGM</p>
       <select name="work_bgm">
-        <option value="01">それゆけワンダーランド</option>
-        <option value="02">シャンパン・ビート</option>
-        <option value="03">天晴</option>
-        <option value="04">五月の病</option>
-        <option value="05">群青のリアル</option>
-        <option value="06">グラディエント</option>
-        <option value="07">人生、踊らにゃ</option>
-        <option value="08">風が鳴く</option>
-        <option value="09">いつもの帰り道</option>
-        <option value="10">ナイトパレード</option>
+        {%for buyed_music in music%}
+        <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
+        {%endfor%}
       </select>
       <p>休憩中のBGM</p>
       <select name="break_bgm">
-        <option value="01">それゆけワンダーランド</option>
-        <option value="02">シャンパン・ビート</option>
-        <option value="03">天晴</option>
-        <option value="04">五月の病</option>
-        <option value="05">群青のリアル</option>
-        <option value="06">グラディエント</option>
-        <option value="07">人生、踊らにゃ</option>
-        <option value="08">風が鳴く</option>
-        <option value="09">いつもの帰り道</option>
-        <option value="10">ナイトパレード</option>
+        {%for buyed_music in music%}
+        <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
+        {%endfor%}
       </select>
-      <p>作業中のBGM</p>
       <p>優先度</p>
       <select name="priority">
         <option value="0">高</option>
         <option value="1">中</option>
         <option value="2">低</option>
       </select>
-      <button type="submit">登録</button>
+      <input type="submit"value="登録">
+    </form>
     </div>
 </body>
 </html>
