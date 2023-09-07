@@ -1,11 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ログイン</title>
-  </head>
-  <body>
-    ログイン
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h3>ログイン画面</h3>
+  {% if error != null %}
+    <p style="color:red">{{error}}</p>
+  {% endif %}
+  {% if msg != null %}
+    <p style="color:blue">{{msg}}</p>
+  {% endif %}
+  <form action="{{url_for('login')}}" method="post">
+    メールアドレス:<input type="text" name="mailaddress" value="{{data.mailaddress if data is defined else ''}}"><br>
+    パスワード：<input type="password" name="password" value="{{data.password if data is defined else ''}}"><br>
+    <button type="submit">ログイン</button>
+  </form>
+  <a href="{{url_for('register_form')}}">アカウントをお持ちでない方はこちら</a>
+</body>
 </html>
