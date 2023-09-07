@@ -6,10 +6,11 @@ todo_act = Blueprint('todo_act', __name__)
 
 
 # todo実行中処理
-@todo_act.route('/todo/act/<param>', methods=['GET'])
+@todo_act.route('/todo_act/<param>', methods=['GET'])
 def act(param):
+
   todo = db.get_todo(todo_id=param)
-  print(todo)
+
   if (todo == "error"):
     return redirect('todo')  # todo一覧にリダイレクトする
   # テンプレートファイルのtodo_act.html
@@ -17,3 +18,7 @@ def act(param):
       'todo_act.html',
       data=todo
   )
+
+
+# # todo完了処理
+# @todo_act.route('/todo/act-fin/<param>', methods=['GET'])

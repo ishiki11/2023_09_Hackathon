@@ -12,7 +12,7 @@ def get_connection():
 # todoのdataを取得する
 def get_todo(todo_id):
   # タスク名、目標時間、bgmタイトル、ファイルpathの取得
-  sql = "SELECT todo.task, todo.target_time, music_work.title AS work_bgm_title,music_work.music_file AS " \
+  sql = "SELECT todo.id todo.task, todo.target_time, music_work.title AS work_bgm_title,music_work.music_file AS " \
         "work_bgm_file,music_break.title AS break_bgm_title, music_break.music_file AS break_bgm_file " \
         "FROM todo LEFT JOIN music AS music_work ON todo.work_bgm = music_work.id LEFT JOIN music AS music_break ON todo.break_bgm = music_break.id " \
         "where todo.id = %s;"

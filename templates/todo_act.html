@@ -20,14 +20,14 @@
     <div class="content">
       <div>実行中のToDO</div>
       <div class="flex">
-        <div>{{ data[0] }}</div>
+        <div>{{ data[1] }}</div>
         <div class="circle" id="work-circle"></div>
         <div class="act">実行中</div>
       </div>
 
       <div class="flex">
         <div>目標時間：</div>
-        <div>{{ data[1] }}</div>
+        <div>{{ data[2] }}</div>
         <div class="state">
           <div class="circle" id="break-circle"></div>
           <div class="break">休憩中</div>
@@ -46,13 +46,13 @@
 
       <div class="flex">
         <div>再生中の曲：</div>
-        <div id="play-music">{{ data[4] }}</div>
+        <div id="play-music">{{ data[5] }}</div>
         <div></div>
       </div>
       <audio id="audio" loop autoplay>
-        <source src="{{ data[5] }}" type="audio/wav" />
+        <source src="{{ data[6] }}" type="audio/wav" />
         <p>
-          このブラウザーはaudio要素に対応していません。<a href="{{ data[5] }}"
+          このブラウザーはaudio要素に対応していません。<a href="{{ data[6] }}"
             >音声ファイルへのリンク</a
           >から御覧ください。
         </p>
@@ -66,9 +66,9 @@
       </div>
     </div>
     <script>
-      var todoData = { data: data };
+      const todoData = {{ data | tojson | safe }};
+      console.log(todoData);
     </script>
-
     <script src="/static/js/todo_act.js"></script>
   </body>
 </html>

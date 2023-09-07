@@ -66,11 +66,11 @@ function timerStart() {
 }
 
 // タイマーstart
+let totalSeconds = 0;
 function startTotalTimer() {
-  let seconds = 0;
   timerInterval = setInterval(() => {
-    seconds++;
-    totalTime.textContent = formatTime(seconds);
+    totalSeconds++;
+    totalTime.textContent = formatTime(totalSeconds);
   }, 1000); // 1秒ごとにカウントアップ
 }
 
@@ -109,7 +109,7 @@ function breakTimer() {
 function setForBreak() {
   //休憩までの時間
   forSeconds = 25 * 60;
-  // forSeconds = 10; // 発表用
+  forSeconds = 10; // 発表用
   breakText.textContent = '休憩までの時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
@@ -118,7 +118,7 @@ function setForBreak() {
 function setRestBreak() {
   // 残りの休憩時間
   forSeconds = 5 * 60;
-  // forSeconds = 5; // 発表用
+  forSeconds = 5; // 発表用
   breakText.textContent = '残りの休憩時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
@@ -147,4 +147,22 @@ function formatTime(seconds) {
 function finishBtn() {
   stopTime();
   audio.pause();
+
+  const seconds = totalSeconds;
+  const data = { seconds, todoData };
+
+  fetch('/todo_act', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+    .then((response) => response.json())
+    .then((responseData) => {
+      console.log(responseData.message);
+    })
+    .catch((error) => {
+      console.error('Error', error);
+    });
 }
