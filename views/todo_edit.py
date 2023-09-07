@@ -2,10 +2,10 @@ from flask import Flask, Blueprint, render_template, redirect, url_for, request
 import os, psycopg2
 todo_edit= Blueprint('todo_edit', __name__)
 
-@todo_edit.route('/todo_editer', methods=['GET'])
-def todo_editer():
+@todo_edit.route('/todo_editer/<param>', methods=['GET'])
+def todo_editer(param):
   userid = 1 #セッションで持ってくる
-  todoId = request.form.get('todoid')
+  todoId = param
   music = userMusic(userid)
   todo = todo_search(todoId)
   return render_template('todo_edit.html', music=music, todo=todo)
