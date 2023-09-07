@@ -70,9 +70,24 @@
           >から御覧ください。
         </p>
       </audio>
-      <label>
-        音量<input type="range" min="0" max="1" step="0.01" id="volumeRange" />
-      </label>
+      <div class="flex">
+        <label>
+          音量<input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            id="volumeRange"
+          />
+        </label>
+        <img
+          src="{{ url_for('static', filename='images/volume.png') }}"
+          alt="音あり"
+          id="img"
+          onclick="switchMute()"
+        />
+      </div>
+
       <div class="button flex">
         <a href="{{ url_for('todo_top.todo_list') }}" class="cancel">中断</a>
         <button class="finish-btn" onclick="finishBtn()">完了</button>

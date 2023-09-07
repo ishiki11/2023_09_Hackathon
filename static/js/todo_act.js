@@ -6,6 +6,8 @@ let src = source.getAttribute('src');
 //音声操作
 let playMusic = document.getElementById('play-music');
 let volumeRange = document.getElementById('volumeRange');
+// mute切り替え
+let muteImg = document.getElementById('img');
 // タイマー操作
 let totalTime = document.getElementById('total-time');
 let BreakTime = document.getElementById('for-breaktime');
@@ -27,14 +29,16 @@ audio.addEventListener('loadedmetadata', function () {
   });
 });
 
+isMute = false; //ミュート状態か
 // フェードイン
+let fadeInInterval;
 function fadeIn() {
   const targetVolume = 0.5; // フェードインで変化する音量
   const fadeDuration = 10000; // フェードにかかる時間（ミリ秒）
   const interval = 100; // フェードの更新間隔（ミリ秒）
   const step = (targetVolume - audio.volume) / (fadeDuration / interval);
   let cnt = fadeDuration / interval;
-  const fadeInInterval = setInterval(() => {
+  fadeInInterval = setInterval(() => {
     audio.volume += step;
     volumeRange.value = audio.volume;
     cnt--;
@@ -45,13 +49,14 @@ function fadeIn() {
 }
 
 // フェードアウト
+let fadeOutInterval;
 function fadeOut() {
   const targetVolume = 0; // フェードアウト後の目標音量
   const fadeDuration = 10000; // フェードにかかる時間（ミリ秒）
   const interval = 100; // フェードの更新間隔（ミリ秒）
   const step = (targetVolume - audio.volume) / (fadeDuration / interval);
   let cnt = fadeDuration / interval;
-  const fadeOutInterval = setInterval(() => {
+  fadeOutInterval = setInterval(() => {
     audio.volume += step;
     volumeRange.value = audio.volume;
     cnt--;
@@ -59,6 +64,22 @@ function fadeOut() {
       clearInterval(fadeOutInterval);
     }
   }, interval);
+}
+
+/**
+ * ミュート状態の切り替え
+ */
+function switchMute() {
+  isMute = !isMute;
+  if (isMute) {
+    audio.volume = 0;
+    clearInterval(fadeInInterval);
+    clearInterval(fadeOutInterval);
+    muteImg.src = '/static/images/mute.png';
+  } else {
+    audio.volume = volumeRange.value;
+    muteImg.src = '/static/images/volume.png';
+  }
 }
 
 let isBreak = false; //休憩中か
@@ -75,9 +96,11 @@ function switchMusic() {
   }
   // srcを変える
   audio.querySelector('source').setAttribute('src', MusicSrc);
-  // <audio>要素を再読み込みして新しい音楽を再生
-  audio.load();
-  fadeIn();
+  if (!isMute) {
+    // <audio>要素を再読み込みして新しい音楽を再生
+    audio.load();
+    fadeIn();
+  }
 }
 
 /**
@@ -125,7 +148,9 @@ function breakTimer() {
     forSeconds--;
     BreakTime.textContent = formatTime(forSeconds);
     if (forSeconds === 10) {
-      fadeOut();
+      if (!isMute) {
+        fadeOut();
+      }
     }
     if (forSeconds === 0) {
       if (isBreak) {
