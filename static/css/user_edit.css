@@ -1,0 +1,15 @@
+.editcenter {
+  margin: auto;
+  width: 50%;
+}
+.editcenter input:not([type="button"]) {
+  width: 100%;
+  padding: 5px;
+}
+.editcenter input[type="button"] {
+  padding: 10px;
+  width: 100px;
+  margin: 50px;
+  margin-left: 40%;
+  border-radius:10px;
+}

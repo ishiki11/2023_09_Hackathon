@@ -28,12 +28,17 @@ def register_exe():
         return render_template('user_register.html',a=a)
 
     count = db.insert_user(mail, pw, username)
-
+    print("session")
+    id=db.select_user(mail)
+    print(id)
     if count == 1:
-        return render_template('user_register.html')
+        session["id"] = id
+        return redirect('/user_edit')
+        # return render_template('user_register.html')
     else:
         error='登録失敗'
         return render_template('user_register.html',error=error)
+
 
 
 
