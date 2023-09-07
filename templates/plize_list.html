@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>音楽一覧</title>
+</head>
+<body>
+    <h1>音楽一覧</h1>
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <th>ファイル</th>
+            <th>ポイント</th>
+        </tr>
+        {% for music in music_data %}
+        <tr>
+            <td>{{ music.title }}</td>
+            <td>{{ music.music_file }}</td>
+            <td>{{ music.music_point }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
