@@ -2,13 +2,28 @@
 <html>
 <head>
     <title>購入ページ</title>
+    <link rel="stylesheet" href="../static/css/plize_list.css">
 </head>
 <body>
     <h1>購入できる音楽</h1>
-    <ul>
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <th>ポイント</th>
+            <th>再生</th>
+        </tr>
         {% for music in unowned_music %}
-            <li>{{ music[1] }} - {{ music[3] }}ポイント</li>
+            <tr>
+                <td>{{ music[1] }}</td>
+                <td>{{ music[3] }}</td>
+                <td>
+                    <audio controls>
+                        <source src="{{ music[2] }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </td>
+            </tr>
         {% endfor %}
-    </ul>
+    </table>
 </body>
 </html>
