@@ -16,5 +16,4 @@ def todo_list():
   get_todo = [[]]*len(todo)
   for i in range(len(todo)):
     get_todo[i] = todo[i]+break_bgm[i]
-  print(get_todo)
   return render_template('todo_top.html', todo=get_todo, username=user_name)
