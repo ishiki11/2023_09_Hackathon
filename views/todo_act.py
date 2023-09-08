@@ -31,10 +31,10 @@ def act(param):
 # # todo完了処理
 @todo_act.route('/todo_act', methods=['POST'])
 def todo_update():
-  # user_id = session.get('id')
-  # if user_id is None:
-  #   # ログインへ遷移
-  #   return redirect(url_for('login.login'))
+  user_id = session.get('id')
+  if user_id is None:
+    # 処理失敗
+    return json.dumps({"flag": False})
   user_id = 1
   # データ情報
   data = json.loads(request.data)
@@ -42,4 +42,5 @@ def todo_update():
   # get_point = math.floor(data["seconds"] / 1) # 1秒　1ポイント
   get_point = math.floor(data["seconds"] / 60)  # 1分　1ポイント
   db.finish_todo(get_point, data["todo_id"], user_id)  # todoテーブルの完了フラグ、獲得ポイントを更新する
-  return json.dumps({"flag": True})  # todo一覧にリダイレクトする
+  # 処理の成功
+  return json.dumps({"flag": True})

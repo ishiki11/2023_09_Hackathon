@@ -236,6 +236,8 @@ function finishBtn() {
       // jsonデータのチェック
       if (data.flag) {
         window.location.replace('/todo_list');
+      } else {
+        window.location.replace('/');
       }
     })
     .catch((error) => {
