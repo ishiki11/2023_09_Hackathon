@@ -16,6 +16,8 @@ let breakText = document.getElementById('break-text');
 let workCircle = document.getElementById('work-circle');
 let breakCircle = document.getElementById('break-circle');
 
+isMute = false; //ミュート状態か
+
 //音声ファイルの読み込み完了時の操作
 //（音声ファイル読み込み前に情報を取得しようとしても正常に取得できないので注意）
 audio.addEventListener('loadedmetadata', function () {
@@ -24,12 +26,13 @@ audio.addEventListener('loadedmetadata', function () {
   volumeRange.value = audio.volume;
   //音量調節レンジの動作
   volumeRange.addEventListener('input', function () {
-    //rangeの値をaudio.volumeに設定する
-    audio.volume = volumeRange.value;
+    if (!isMute) {
+      //rangeの値をaudio.volumeに設定する
+      audio.volume = volumeRange.value;
+    }
   });
 });
 
-isMute = false; //ミュート状態か
 // フェードイン
 let fadeInInterval;
 function fadeIn() {
