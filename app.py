@@ -3,6 +3,9 @@ from flask import Flask, render_template
 # viewsの読み込み
 from views.user_register import user_register
 from views.todo_top import todo_top
+from views.user_edit import user_edit
+from views.user_register import user_register
+from views.user_logout import user_logout
 from views.todo_act import todo_act
 from views.todo_register import todo_reg
 from views.login import login
@@ -16,6 +19,9 @@ app = Flask(__name__)
 app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 
 # Blueprintの利用
+# 利用者auth
+app.register_blueprint(user_edit)
+app.register_blueprint(user_logout)
 app.register_blueprint(user_register)  # 新規登録
 app.register_blueprint(todo_top)  # todo一覧
 app.register_blueprint(todo_act)  # todo実行

@@ -8,25 +8,43 @@
 </head>
 <body>
  <div class="center">
+
+
+  {% if error != null %}
+  <p style="color:red">{{error}}</p>
+  {% endif %}
+
+  {% if a != null %}
+  <p style="color:red">{{a}}</p>
+  {% endif %}
+
+
     <form action="/register_exe" method="post">
 
+      <p>ユーザー名<br>
+        <input type="text" name="username" required></p>
+
+
      <p>メールアドレス<br>
-       <input type="email" name="mail"></p>
+       <input type="email" name="mail" required></p>
 
-     <p>パスワード<br>
-       <input type="password" name="pw"></p>
-
+       <p>
+        <div class="register_form_group">
+         <div class="register_label">
+           <div class="">パスワード</div>
+           <div class="rule">※パスワードは4文字以上、大文字小文字混合の英数字のみで入力してください</div>
+         </div>
+         <div class="register_form">
+           <div class=""><input type="password" name="pw" required></div>
+         </div>
+        </div>
+       </p>
 
      <p>確認パスワード<br>
-       <input type="password" name="pw2"></p>
-
-     <p>ユーザー名<br>
-      <input type="text" name="username"></p>
-
-
+       <input type="password" name="pw2" required></p>
+      <div class="register">
       <p><input type="submit" value="登録" id="button"></p>
-
-
+      <div>
   </div>
     </form>
 </body>
