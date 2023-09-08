@@ -24,56 +24,52 @@
     <div class="user-name">ようこそ {{ username[0] }} さん</div>
     <div class="content">
       {% if todo|length > 0 %}
-      <table border="2" class="todo-list">
-        <tr class="todo-th">
-          <th class="th1">ToDoの内容</th>
-          <th class="th2">作業・休憩音楽</th>
-          <th class="th3">実行・編集</th>
-        </tr>
-        {% for ToDo in todo %}
-        <tr class="todo-item">
-          <td class="td1">
-            <div class="todo-list1">
-              <div class="task">{{ToDo[2]}}</div>
-              <div class="target">
-                <div class="target-text">目標 : {{ToDo[3]}}</div>
-                {% if ToDo[9]==1%}
-                <div class="hight">高</div>
-                {% elif ToDo[9]==2 %}
-                <div class="mid">中</div>
-                {% else %}
-                <div class="low">低</div>
-                {% endif %}
+      <!-- スクロール可能なコンテナ -->
+      <div class="scrollable-container">
+        <table border="2" class="todo-list">
+          {% for ToDo in todo %}
+          <tr class="todo-item">
+            <td class="td1">
+              <div class="todo-list1">
+                <div class="task">{{ToDo[2]}}</div>
+                <div class="target">
+                  <div class="target-text">目標 : {{ToDo[3]}}</div>
+                  {% if ToDo[9]==1%}
+                  <div class="hight">高</div>
+                  {% elif ToDo[9]==2 %}
+                  <div class="mid">中</div>
+                  {% else %}
+                  <div class="low">低</div>
+                  {% endif %}
+                </div>
               </div>
-            </div>
-          </td>
-          <td class="td2">
-            <div class="todo-list2">
-              <div class="work">
-                <div class="bgm">{{ToDo[11]}}</div>
-                <div>が作業中に流れる</div>
+            </td>
+            <td class="td2">
+              <div class="todo-list2">
+                <div class="work">
+                  <div class="work-text">作業BGM</div>
+                  <div>{{ToDo[11]}}</div>
+                </div>
+                <div class="break">
+                  <div class="break-text">休憩BGM</div>
+                  <div>{{ToDo[13]}}</div>
+                </div>
               </div>
-              <div class="break">
-                <div class="bgm">{{ToDo[13]}}</div>
-                <div>が休憩中に流れる</div>
+            </td>
+            <td class="td3">
+              <div class="todo-list3">
+                <a href="/todo_act/{{ToDo[0]}}" class="td3-a">実行</a>
+                <a href="/todo_editer/{{ToDo[0]}}" class="td3-a">編集</a>
               </div>
-            </div>
-          </td>
-          <td class="td3">
-            <div class="todo-list3">
-              <div class="a-tag">
-                <a href="/todo_act/{{ToDo[0]}}">実行</a>
-                <a href="/todo_editer/{{ToDo[0]}}">編集</a>
-              </div>
-            </div>
-          </td>
-        </tr>
-        {% endfor %}
-      </table>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+      </div>
       {% else %}
       <div class="not-todo">
-        <p>実行できるTodoがありません</p>
-        <p><a href="/todo_register">Todoの作成</a>をしてください</p>
+        <div>TODOリストを管理できます。</div>
+        <div>新しいTODOを作成して実行してみましょう。</div>
       </div>
       {% endif %}
       <div class="column">

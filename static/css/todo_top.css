@@ -3,71 +3,152 @@ body {
   font-size: 16px;
 }
 
-.todo-list {
-  display: flex;
-  border-style: solid solid none solid;
-  flex-wrap: wrap;
-  width: 70vw;
-  margin-left: 3rem;
-}
-.todo-list1,
-.todo-list3 {
-  display: flex;
-  flex-wrap: wrap;
-  width: 20vw;
-  border-style: none none solid none;
-}
-.todo-list2 {
-  width: 400px;
-  display: flex;
-  flex-wrap: wrap;
-  border-style: none solid solid;
-}
-.task {
-  font-size: 3rem;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-.bgm {
-  font-size: 30px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-}
-
-.hight,
-.midl,
-.low {
-  width: 25px;
-  height: 25px;
-  margin-left: 10px;
-  text-align: center;
-  border-radius: 50%;
-}
-.hight {
-  background-color: rgb(137, 229, 255);
-}
-.midl {
-  background-color: rgb(255, 202, 215);
-}
-.low {
-  background-color: aquamarine;
-}
-
-.todo_register {
-  display: flex;
-  flex-wrap: wrap;
-  background-color: gainsboro;
-  margin-left: 1000px;
-  width: 200px;
-  height: 100px;
-  align-items: center;
-  justify-content: center;
-}
-
+/* ユーザネーム */
 .user-name {
+  text-align: center;
   font-size: 1.5rem;
 }
+
+/* 中身 */
 .content {
-  margin: auto;
-  width: 80vw;
+  margin-top: 5vh;
+  display: flex;
+  justify-content: space-around;
+  font-size: 1rem;
+}
+
+/* スクロール可能なコンテナのスタイル */
+.scrollable-container {
+  max-height: 60vh; /* コンテナの最大高さを設定 */
+  overflow-y: auto; /* 縦方向のスクロールバーを表示 */
+  border: 5px solid #ccc; /* ボーダーを追加（オプション） */
+}
+
+/* todoタスク名 */
+.task {
+  text-align: center;
+  font-size: 2rem;
+}
+/* todoリスト */
+.todo-list {
+  width: 70vw;
+  border-spacing: 0;
+}
+/* th部分 */
+.todo-th {
+  width: 70vw;
+}
+.th1 {
+  width: 25vw;
+}
+.th2 {
+  width: 35vw;
+}
+.th3 {
+  width: 10vw;
+}
+
+/* 目標 */
+.td1 {
+  width: 20vw;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.todo-list1 {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.target {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.hight,
+.mid,
+.low {
+  font-size: 1.3rem;
+  font-weight: 600;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  text-align: center;
+}
+.hight {
+  background-color: #95d2ff;
+}
+.mid {
+  background-color: #ff9595;
+}
+.low {
+  background-color: #96ffa6;
+}
+
+/* 音楽のやつ */
+.td2 {
+  width: 40vw;
+  font-size: 1.5rem;
+}
+.todo-list2 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+.work-text,
+.break-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.work-text {
+  color: #0c24ff;
+}
+.break-text {
+  color: #27d038;
+}
+
+/* 実行、編集 */
+.td3 {
+  width: 10vw;
+}
+.todo-list3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.td3-a {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 0.8rem;
+  border-radius: 5rem;
+  background-color: #d9d9d9;
+}
+.td3-a:hover {
+  background-color: #c9c9c9;
+}
+
+/* todoがなかった時 */
+.not-todo {
+  font-size: 2rem;
+}
+
+/* 右側のリンク */
+.column {
+  width: 20vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.todo-item {
+  display: flex;
 }
