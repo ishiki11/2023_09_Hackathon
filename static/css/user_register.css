@@ -13,3 +13,23 @@
   margin-left: 40%;
   border-radius:10px;
 }
+.register_form_group {
+  display: flex;
+  flex-direction: column;
+}
+.register_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rule {
+  font-size:12px;
+  padding-left: 50px;
+}
+.register_form {
+  display: flex;
+  flex-direction: column;
+}
+.register {
+  margin-top: 40px;
+}

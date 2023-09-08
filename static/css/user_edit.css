@@ -13,3 +13,23 @@
   margin-left: 40%;
   border-radius:10px;
 }
+.edit_form_group {
+  display: flex;
+  flex-direction: column;
+}
+.edit_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rule2 {
+  font-size:12px;
+  padding-left: 50px;
+}
+.edit_form {
+  display: flex;
+  flex-direction: column;
+}
+.edit {
+  margin-top: 40px;
+}

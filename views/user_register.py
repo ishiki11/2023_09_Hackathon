@@ -43,6 +43,11 @@ def register_exe():
       error = 'パスワードで大文字と小文字を使用してください'
       return render_template('user_register.html',error=error)
 
+    if not re.match("^[a-zA-Z0-9]+$", pw):
+      error = 'パスワードは英数字のみを使用してください'
+      return render_template('user_register.html',error=error)
+
+
 
     count = db.insert_user(mail, pw, username)
     print("session")
@@ -51,6 +56,7 @@ def register_exe():
     if count == 1:
         session["id"] = id
         return redirect('/user_edit')
+        # return redirect('/todo_top') 本来ならこっち
         # return render_template('user_register.html')
     else:
         error='登録失敗'
