@@ -6,7 +6,6 @@ todo_top = Blueprint('todo_top', __name__)
 @todo_top.route('/todo_list', methods=['GET'])
 def todo_list():
   user_id = session.get('id')
-  user_id = 1  # 今だけ
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
