@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>ログイン</title>
-  </head>
-  <body>
-    ログイン
-  </body>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>Pomodoro</header>
+  <h1>Pomodoro</h1>
+  <p>ポモドーロテクニックを活用して</p>
+  <p>タスクの効率化と生産性、</p>
+  <p>集中力の向上を</p>
+  {% if error != null %}
+  <p style="color:red">{{error}}</p>
+  {% endif %}
+  <form action="{{url_for('login.login_exe')}}" method="post">
+    メールアドレス:<input type="text" name="mailaddress" value="{{data.mailaddress if data is defined else ''}}"><br>
+    パスワード：<input type="password" name="password" value="{{data.password if data is defined else ''}}"><br>
+    <button type="submit">ログイン</button>
+  </form>
+  <a href="user_register">アカウントをお持ちでない方はこちら</a>
+</body>
 </html>
