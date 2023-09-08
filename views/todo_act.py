@@ -42,4 +42,4 @@ def todo_update():
   # get_point = math.floor(data["seconds"] / 1) # 1秒　1ポイント
   get_point = math.floor(data["seconds"] / 60)  # 1分　1ポイント
   db.finish_todo(get_point, data["todo_id"], user_id)  # todoテーブルの完了フラグ、獲得ポイントを更新する
-  return redirect(url_for('todo_top.todo_list'))  # todo一覧にリダイレクトする
+  return json.dumps({"flag": True})  # todo一覧にリダイレクトする

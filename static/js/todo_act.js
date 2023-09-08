@@ -233,6 +233,10 @@ function finishBtn() {
     })
     .then((data) => {
       console.log(data.message);
+      // jsonデータのチェック
+      if (data.flag) {
+        window.location.replace('/todo_list');
+      }
     })
     .catch((error) => {
       console.error('Error', error);
