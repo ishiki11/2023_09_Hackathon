@@ -18,7 +18,7 @@ def todo_list():
     return render_template('login.html')
 
 
-def todo_list(userid):
+def get_todo_list(userid):
   sql = "SELECT * FROM ToDo JOIN Music on ToDo.work_bgm = Music.id  WHERE user_id = %s AND comp_flg = 0"
   try:
     url = os.environ['DATABASE_URL']
