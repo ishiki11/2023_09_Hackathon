@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="static/css/user_edit.css">
+  <title>利用者編集</title>
+</head>
+<body>
+
+  {% if error != null %}
+  <p style="color:red">{{error}}</p>
+  {% endif %}
+
+
+  {% if msg != null %}
+  <p style="color:blue">{{msg}}</p>
+  {% endif %}
+
+  <div class="editcenter">
+    <form action="/edit_exe" method="post">
+
+      <p>ユーザー名<br>
+        <input type="text" name="username" placeholder="" value="{{row[1]}}"></p>
+
+     <p>メールアドレス<br>
+       <input type="email" name="mail" placeholder="" value="{{row[0]}}"></p>
+
+       <p>
+        <div class="edit_form_group">
+         <div class="edit_label">
+           <div class="">パスワード</div>
+           <div class="rule2">※パスワードは4文字以上、大文字小文字混合の英数字のみで入力してください</div>
+         </div>
+         <div class="edit_form">
+           <div    class=""><input type="password" name="pw" required></div>
+         </div>
+        </div>
+       </p>
+
+     <p>確認パスワード<br>
+       <input type="password" name="pw2" ></p>
+
+      <div class="edit">
+      <p><input type="submit" value="変更" id="button"></p>
+      </div>
+
+    </form>
+  </div>
+</body>
+</html>

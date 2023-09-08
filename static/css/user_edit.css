@@ -1,35 +1,35 @@
-.center {
+.editcenter {
   margin: auto;
   width: 50%;
 }
-.center input:not([type="button"]) {
+.editcenter input:not([type="button"]) {
   width: 100%;
   padding: 5px;
 }
-.center input[type="button"] {
+.editcenter input[type="button"] {
   padding: 10px;
   width: 100px;
   margin: 50px;
   margin-left: 40%;
   border-radius:10px;
 }
-.register_form_group {
+.edit_form_group {
   display: flex;
   flex-direction: column;
 }
-.register_label {
+.edit_label {
   display: flex;
   flex-direction: row;
   align-items: center;
 }
-.rule {
+.rule2 {
   font-size:12px;
   padding-left: 50px;
 }
-.register_form {
+.edit_form {
   display: flex;
   flex-direction: column;
 }
-.register {
+.edit {
   margin-top: 40px;
 }
