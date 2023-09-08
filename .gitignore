@@ -3,3 +3,6 @@ __pycache__/
 
 # db接続
 config.py
+
+# vscodeの設定
+.vscode

@@ -21,7 +21,7 @@ def todo_edit_exe(param):
   edit_inf = [task,target_time,work_bgm,break_bgm,priority,todoId]
   count = todo_edit_exe(edit_inf)
   if count == 1:
-    return redirect(url_for('todo_top'))
+    return redirect(url_for('todo_top.todo_list'))
   else:
     error = '変更に失敗しました。'
     music = userMusic(userid)
