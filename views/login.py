@@ -17,7 +17,7 @@ def login_exe():
   # ログイン判定
   if db.login(mailaddress, password):
     userid = db.userid_search(mailaddress)
-    session['user'] = userid
+    session['id'] = userid
     return redirect(url_for('todo_top.todo_list'))
   else:
     error = 'メールアドレスまたはパスワードが違います。'
