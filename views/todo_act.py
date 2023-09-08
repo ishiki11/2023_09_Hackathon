@@ -10,12 +10,10 @@ todo_act = Blueprint('todo_act', __name__)
 # todo実行中処理
 @todo_act.route('/todo_act/<int:param>', methods=['GET'])
 def act(param):
-  # user_id = session.get('id')
-  # if user_id is None:
-  #   # ログインへ遷移
-  #   return redirect(url_for('login.login'))
-
-  user_id = 1
+  user_id = session.get('id')
+  if user_id is None:
+    # ログインへ遷移
+    return redirect(url_for('login.login'))
 
   todo = db.get_todo(param, user_id)
 
@@ -35,7 +33,6 @@ def todo_update():
   if user_id is None:
     # 処理失敗
     return json.dumps({"flag": False})
-  user_id = 1
   # データ情報
   data = json.loads(request.data)
 
