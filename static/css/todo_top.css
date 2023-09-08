@@ -1,52 +1,59 @@
 @charset "utf-8";
-.todo-list{
+body {
+  font-size: 16px;
+}
+
+.todo-list {
   display: flex;
   border-style: solid solid none solid;
   flex-wrap: wrap;
-  width: 804px;
-  margin-left: 50px;
+  width: 70vw;
+  margin-left: 3rem;
 }
-.todo-list1,.todo-list3{
+.todo-list1,
+.todo-list3 {
   display: flex;
   flex-wrap: wrap;
-  width: 200px;
-  border-style:none none solid none ;
+  width: 20vw;
+  border-style: none none solid none;
 }
-.todo-list2{
+.todo-list2 {
   width: 400px;
   display: flex;
   flex-wrap: wrap;
   border-style: none solid solid;
 }
-.task{
-  font-size: 50px;
+.task {
+  font-size: 3rem;
   margin-top: 5px;
   margin-bottom: 5px;
 }
-.bgm{
+.bgm {
   font-size: 30px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-.hight,.midl,.low{
+.hight,
+.midl,
+.low {
   width: 25px;
   height: 25px;
   margin-left: 10px;
   text-align: center;
   border-radius: 50%;
 }
-.hight{
+.hight {
   background-color: rgb(137, 229, 255);
 }
-.midl{
+.midl {
   background-color: rgb(255, 202, 215);
 }
-.low{
+.low {
   background-color: aquamarine;
 }
 
-.todo_register{
+.todo_register {
   display: flex;
   flex-wrap: wrap;
   background-color: gainsboro;
@@ -54,5 +61,13 @@
   width: 200px;
   height: 100px;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
+}
+
+.user-name {
+  font-size: 1.5rem;
+}
+.content {
+  margin: auto;
+  width: 80vw;
 }
