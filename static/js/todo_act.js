@@ -177,7 +177,7 @@ function breakTimer() {
 function setForBreak() {
   //休憩までの時間
   forSeconds = 25 * 60;
-  forSeconds = 20; // 発表用
+  // forSeconds = 20; // 発表用
   breakText.textContent = '休憩までの時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
@@ -186,7 +186,7 @@ function setForBreak() {
 function setRestBreak() {
   // 残りの休憩時間
   forSeconds = 5 * 60;
-  forSeconds = 20; // 発表用
+  // forSeconds = 20; // 発表用
   breakText.textContent = '残りの休憩時間：';
   BreakTime.textContent = formatTime(forSeconds);
 }
