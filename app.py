@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, session
+from flask import Flask, render_template, session
 # viewsの読み込み
 from views.user_register import user_register
 from views.todo_top import todo_top
@@ -6,7 +6,8 @@ from views.todo_register import todo_reg
 from views.login import login
 from views.todo_edit import todo_edit
 from views.todo_finished import todo_finished
-import string, random
+import string
+import random
 # インスタンスの生成
 app = Flask(__name__)
 app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
@@ -18,6 +19,12 @@ app.register_blueprint(todo_reg)
 app.register_blueprint(login)
 app.register_blueprint(todo_edit)
 app.register_blueprint(todo_finished)
+
+
+# セッションを初期化
+@app.before_request
+def before_request():
+  session.modified = True
 
 
 # Topページ
