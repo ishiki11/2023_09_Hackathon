@@ -1,23 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>音楽一覧</title>
+    <title>購入ページ</title>
 </head>
 <body>
-    <h1>音楽一覧</h1>
-    <table>
-        <tr>
-            <th>タイトル</th>
-            <th>ファイル</th>
-            <th>ポイント</th>
-        </tr>
-        {% for music in music_data %}
-        <tr>
-            <td>{{ music.title }}</td>
-            <td>{{ music.music_file }}</td>
-            <td>{{ music.music_point }}</td>
-        </tr>
+    <h1>購入できる音楽</h1>
+    <ul>
+        {% for music in unowned_music %}
+            <li>{{ music[1] }} - {{ music[3] }}ポイント</li>
         {% endfor %}
-    </table>
+    </ul>
 </body>
 </html>
