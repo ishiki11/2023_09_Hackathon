@@ -11,28 +11,32 @@
     <p>{{error}}</p>
     {% endif %}
     <div class="register_form">
-      <form action="/todo_editer/{{todo[0][0]}}" method="post">
+      <form action="/todo_editer/{{ todo[0] }}" method="post">
         <p>ToDoの内容</p>
-        <input type="text" placeholder="{{todo[0][2]}}" name="task" />
+        <input type="text" placeholder="{{todo[2]}}" name="task" />
         <p>目標時間</p>
-        <input type="text" placeholder="{{todo[0][3]}}" name="target_time" />
+        <input type="text" placeholder="{{todo[3]}}" name="target_time" />
         <p>作業中のBGM</p>
         <select name="work_bgm">
           {%for buyed_music in music%}
-          <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
-          {%endfor%}
+          <option value="{{buyed_music[1]}}" {% if buyed_music[1]==todo[5] %} selected {% endif %}>
+            {{buyed_music[2]}}
+          </option>
+          {% endfor %}
         </select>
         <p>休憩中のBGM</p>
         <select name="break_bgm">
           {%for buyed_music in music%}
-          <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
-          {%endfor%}
+          <option value="{{buyed_music[1]}}" {% if buyed_music[1]==todo[6] %} selected {% endif %}>
+            {{buyed_music[2]}}
+          </option>
+          {% endfor %}
         </select>
         <p>優先度</p>
         <select name="priority">
-          <option value="0">高</option>
-          <option value="1">中</option>
-          <option value="2">低</option>
+          <option value="0" {% if todo[8]==0 %} selected {%endif%}>高</option>
+          <option value="1" {% if todo[8]==1 %} selected {%endif%}>中</option>
+          <option value="2" {% if todo[8]==2 %} selected {%endif%}>低</option>
         </select>
         <input type="submit" value="編集" />
       </form>

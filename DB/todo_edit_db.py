@@ -25,24 +25,26 @@ def todo_edit_exe(edit_info):
     return count
 
 
-# todo検索
+# idが一致するtodo取得
 def todo_search(todoid):
   sql = "SELECT * FROM todo where id = %s"
   try:
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute(sql, (todoid,))
-    todo = cursor.fetchall()
-  except psycopg2.DatabaseError:
-    todo = "error"
+    todo = cursor.fetchone()
+  except psycopg2.DatabaseError as e:
+    return e
   finally:
     cursor.close()
     connection.close()
     return todo
 
 
+# userMusic取得
 def userMusic(user_id):
-  sql = "SELECT * FROM UserMusic JOIN Music on UserMusic.MusicId = Music.id where userId = %s"
+  sql = "SELECT um.id, um.musicid, m.title FROM UserMusic AS um JOIN Music AS m on um.MusicId = m.id " \
+      "where userId = %s ORDER BY um.musicid ASC;"
   try:
     connection = get_connection()
     cursor = connection.cursor()
