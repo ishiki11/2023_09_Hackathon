@@ -9,9 +9,6 @@ todo_edit = Blueprint('todo_edit', __name__)
 def todo_editer(param):
   user_id = session.get('id')
 
-  # 後で消す
-  user_id = 1
-
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -33,9 +30,7 @@ def todo_editer(param):
 @todo_edit.route('/todo_editer/<param>',  methods=['POST'])
 def todo_editer_exe(param):
   user_id = session.get('id')
-
-  # 後で消す
-  user_id = 1
+  error = ""
 
   if user_id is None:
     # ログインへ遷移
@@ -64,23 +59,33 @@ def todo_editer_exe(param):
   if target_time == "":
     target_time = todo[3]
   if work_bgm == "":
-    work_bgm = todo[5]
-  if work_bgm == "":
-    work_bgm = todo[6]
-  if work_bgm == "":
-    work_bgm = todo[8]
-
-  edit_inf = [task, target_time, int(work_bgm), int(break_bgm), int(priority), int(todoId)]
-
-  # 正規表現パターン　受け付ける00時間00分　時間のみ分のみでも通る
-  time_pattern = re.compile(r'^([1-9]\d?時間[1-9]\d?分)|([1-9]\d?時間)|([1-9]\d?分)$')
+    work_bgm = int(todo[5])
+  if break_bgm == "":
+    break_bgm = int(todo[6])
+  if priority == "":
+    priority = int(todo[8])
 
   music = db.userMusic(user_id)  # UserMusicテーブルの値を取得
 
+  # 入力値チェック
+  if len(task) > 255 | len(target_time) > 255:  # 文字数
+    error = "入力数が多すぎます"
+  if db.usermusic_search(user_id, work_bgm) is None or\
+          db.usermusic_search(user_id, break_bgm) is None:  # usermusicにある音楽を選択しているか
+    error = "音楽を正しく設定してください"
+  if priority != 0 and priority != 1 and priority != 2:
+    error = "優先度を正しく設定してください"
+  # 正規表現パターン　受け付ける00時間00分　時間のみ分のみでも通る
+  time_pattern = re.compile(r'(^[1-9]\d?時間[1-9]\d?分$)|(^[1-9]\d?時間$)|(^[1-9]\d?分$)')
   if not time_pattern.match(target_time):
-    error = "目標時間を正しく設定してください 数字は半角のみです"
+    error = "目標時間を正しく設定してください 例：○○時間○○分"
+
+  # エラーがある時
+  if error != "":
     return render_template('todo_edit.html', error=error, music=music, todo=todo)
 
+  # 編集処理
+  edit_inf = [task, target_time, work_bgm, break_bgm, priority, todoId]
   count = db.todo_edit_exe(edit_inf)
   if count == 1:
     return redirect(url_for('todo_top.todo_list'))  # todo一覧に戻る

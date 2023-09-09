@@ -2,6 +2,8 @@
 /* エラー表示 */
 .error {
   color: red;
+  text-align: center;
+  margin-top: 1.5rem;
 }
 .content {
   width: 60vw;
@@ -77,4 +79,7 @@
   padding: 1rem 2.5rem;
   border-radius: 2rem;
   border: 0;
+}
+.submit:hover {
+  background-color: #c9c9c9;
 }

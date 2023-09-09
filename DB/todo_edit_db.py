@@ -56,3 +56,18 @@ def userMusic(user_id):
     cursor.close()
     connection.close()
     return music
+
+
+def usermusic_search(user_id, music_id):
+  sql = "SELECT * FROM usermusic WHERE userid = %s AND musicid = %s;"
+  try:
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(sql, (user_id, music_id,))
+    music = cursor.fetchone()
+  except psycopg2.DatabaseError:
+    return music
+  finally:
+    cursor.close()
+    connection.close()
+    return music
