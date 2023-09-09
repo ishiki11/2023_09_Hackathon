@@ -12,5 +12,4 @@ def todo_list():
     return redirect('/')
   user_name = db.get_username(user_id)  # user名取得
   todo = db.todo_list(user_id)  # user_idが一致するtodoの取得
-  print(todo)
   return render_template('todo_top.html', todo=todo, username=user_name)
