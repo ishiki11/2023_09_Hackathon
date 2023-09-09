@@ -1,27 +1,29 @@
 @charset "utf-8";
 body {
   font-size: 16px;
+  margin: 0;
 }
 
 /* ユーザネーム */
 .user-name {
   text-align: center;
   font-size: 1.5rem;
+  margin-top: 2rem;
 }
 
 /* 中身 */
 .content {
   margin-top: 5vh;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   font-size: 1rem;
+  height: 70vh;
 }
 
 /* スクロール可能なコンテナのスタイル */
 .scrollable-container {
   max-height: 60vh; /* コンテナの最大高さを設定 */
   overflow-y: auto; /* 縦方向のスクロールバーを表示 */
-  border: 5px solid #ccc; /* ボーダーを追加（オプション） */
 }
 
 /* todoタスク名 */
@@ -31,26 +33,14 @@ body {
 }
 /* todoリスト */
 .todo-list {
-  width: 70vw;
+  width: 75vw;
   border-spacing: 0;
-}
-/* th部分 */
-.todo-th {
-  width: 70vw;
-}
-.th1 {
-  width: 25vw;
-}
-.th2 {
-  width: 35vw;
-}
-.th3 {
-  width: 10vw;
 }
 
 /* 目標 */
 .td1 {
-  width: 20vw;
+  width: 25vw;
+  height: 100%;
   display: flex;
   align-items: center;
   font-size: 1.5rem;
@@ -139,16 +129,54 @@ body {
 
 /* todoがなかった時 */
 .not-todo {
+  width: 50vw;
   font-size: 2rem;
+  display: flex;
+  flex-direction: column;
+  margin-top: 20vh;
 }
 
 /* 右側のリンク */
 .column {
-  width: 20vw;
+  width: 15vw;
   display: flex;
   flex-direction: column;
 }
-
-.todo-item {
-  display: flex;
+.a-tag {
+  font-size: 1.4rem;
+  margin-left: auto;
+  text-decoration: none;
+  color: black;
+  display: inline-block;
+  width: fit-content;
+}
+.a-tag::after {
+  position: relative;
+  bottom: 1px; /*　線の位置を設定できる */
+  content: ''; /* :hover::after呼び出す */
+  display: block;
+  width: 0;
+  transition: width 0.3s; /*width 0~:hoverのwidthに0.3sで遷移*/
+  border-bottom: 2px solid black;
+  /* margin: 0 auto; で中央から外側に線を引く */
+  margin-left: auto;
+}
+.a-tag:hover::after {
+  width: 100%;
+}
+/* todoの作成 */
+.todo_register {
+  display: inline;
+  width: fit-content;
+  margin-left: auto;
+  margin-top: 5vh;
+  background-color: #d9d9d9;
+  color: black;
+  font-size: 1.5rem;
+  padding: 1.5rem 1.5rem;
+  border-radius: 1rem;
+  text-decoration: none;
+}
+.todo_register:hover {
+  background-color: #c9c9c9;
 }
