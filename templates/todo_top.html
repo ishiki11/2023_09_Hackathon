@@ -40,9 +40,9 @@
                 <div class="task">{{ToDo[2]}}</div>
                 <div class="target">
                   <div class="target-text">目標 : {{ToDo[3]}}</div>
-                  {% if ToDo[9]==1%}
+                  {% if ToDo[8] == 0 %}
                   <div class="hight">高</div>
-                  {% elif ToDo[9]==2 %}
+                  {% elif ToDo[8] == 1 %}
                   <div class="mid">中</div>
                   {% else %}
                   <div class="low">低</div>
@@ -54,11 +54,11 @@
               <div class="todo-list2">
                 <div class="work">
                   <div class="work-text">作業BGM</div>
-                  <div>{{ToDo[11]}}</div>
+                  <div>{{ToDo[9]}}</div>
                 </div>
                 <div class="break">
                   <div class="break-text">休憩BGM</div>
-                  <div>{{ToDo[13]}}</div>
+                  <div>{{ToDo[10]}}</div>
                 </div>
               </div>
             </td>
