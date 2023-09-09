@@ -23,7 +23,7 @@ def get_todo(todo_id, user_id):
     cursor.execute(sql, (todo_id, user_id,))
     todo = cursor.fetchone()
   except psycopg2.DatabaseError as e:  # catchの処理
-    todo = "error"
+    print(e)
   finally:
     cursor.close()
     connection.close()

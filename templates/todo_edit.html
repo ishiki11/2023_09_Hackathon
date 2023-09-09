@@ -1,41 +1,81 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/todo_register.css">
-  <title>ToDo編集</title>
-</head>
-<body>
-  {% if error != null %}
-<p>{{error}}</p>
-{% endif %}
-<div class="register_form">
-    <form action="/todo_edit_exe/{{todo[0][0]}}" method="post">
-    <p>ToDoの内容</p>
-    <input type="text" placeholder="{{todo[0][2]}}" name="task">
-    <p>目標時間</p>
-      <input type="text" placeholder="{{todo[0][3]}}" name="target_time">
-      <p>作業中のBGM</p>
-      <select name="work_bgm">
-        {%for buyed_music in music%}
-        <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
-        {%endfor%}
-      </select>
-      <p>休憩中のBGM</p>
-      <select name="break_bgm">
-        {%for buyed_music in music%}
-        <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
-        {%endfor%}
-      </select>
-      <p>優先度</p>
-      <select name="priority">
-        <option value="0">高</option>
-        <option value="1">中</option>
-        <option value="2">低</option>
-      </select>
-      <input type="submit"value="編集">
-    </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/todo_register.css" />
+    <title>ToDo編集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/header.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <!-- ↓ログアウトボタンのあるページのみ -->
+      <a href="/logout" class="logout">ログアウト</a>
+      <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+      <a href="/todo_list"class="todo_top">戻る</a>
     </div>
-</body>
+    {% if error != null %}
+    <p class="error">{{error}}</p>
+    {% endif %}
+    <div class="content">
+      <form action="/todo_editer/{{ todo[0] }}" method="post" class="form">
+        <div class="form-item">ToDoの内容
+          <input type="text" placeholder="{{todo[2]}}" name="task" class="input input-task" />
+        </div>
+        <div class="flex">
+          <div class="form-item flex-item">
+            <div>作業中のBGM</div>
+            <div class="select-div">
+              <select name="work_bgm" class="select">
+                {%for buyed_music in music%}
+                <option value="{{buyed_music[1]}}" {% if buyed_music[1]==todo[5] %} selected {% endif %}>
+                  {{buyed_music[2]}}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="form-item flex-item">
+            目標時間 <span class="target-text">※数字は半角で入力してください</span>
+            <input type="text" placeholder="{{todo[3]}}" name="target_time" class="input"/>
+          </div>
+        </div>
+
+        <div class="flex">
+          <div class="form-item flex-item">
+            <div>休憩中のBGM</div>
+            <div class="select-div">
+              <select name="break_bgm" class="select">
+                {%for buyed_music in music%}
+                <option value="{{buyed_music[1]}}" {% if buyed_music[1]==todo[6] %} selected {% endif %}>
+                  {{buyed_music[2]}}
+                </option>
+                {% endfor %}
+              </select>
+            </div>
+          </div>
+          <div class="form-item flex-item">
+            <div>優先度</div>
+            <div class="select-div">
+              <select name="priority" class="select">
+                <option value="0" {% if todo[8]==0 %} selected {%endif%}>高</option>
+                <option value="1" {% if todo[8]==1 %} selected {%endif%}>中</option>
+                <option value="2" {% if todo[8]==2 %} selected {%endif%}>低</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="submit-div">
+          <input type="submit" value="編集" class="submit"/>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>

@@ -13,11 +13,11 @@ def act(param):
   user_id = session.get('id')
   if user_id is None:
     # ログインへ遷移
-    return redirect(url_for('login.login'))
+    return redirect('/')
 
   todo = db.get_todo(param, user_id)
 
-  if (todo == "error"):
+  if (todo == None):
     return redirect(url_for('todo_top.todo_list'))  # todo一覧にリダイレクトする
   # テンプレートファイルのtodo_act.html
   return render_template(

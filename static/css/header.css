@@ -1,3 +1,8 @@
+body {
+  font-size: 16px;
+  margin: 0;
+}
+
 /* headerファイル */
 .header {
   width: 100%;
@@ -11,9 +16,31 @@
 
 /* ログアウト */
 .logout {
+  color: black;
+  text-decoration: none;
+  background-image: url(././img/logout.svg);
+  background-repeat: no-repeat;
+  padding-left: 40px;
   position: absolute;
   font-size: 1.5rem;
   right: 5rem;
+}
+/* 戻るボタン(ログイン前) */
+.back {
+  position: absolute;
+  font-size: 1.5rem;
+  left: 5rem;
+}
+/* 戻るボタン(ログイン後) */
+.todo_top {
+  color: black;
+  text-decoration: none;
+  background-image: url(././img/back.svg);
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  position: absolute;
+  font-size: 1.5rem;
+  left: 5rem;
 }
 
 /* Pomodoro */
