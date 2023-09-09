@@ -29,7 +29,7 @@ def get_username(user_id):
 def todo_list(user_id):
   sql = "SELECT t.id, t.user_id, t.task, t.target_time, t.get_point, t.work_bgm, t.break_bgm, t.comp_flg, t.priority, mw.title AS work_bgm_title, mb.title AS break_bgm_title " \
       "FROM ToDo AS t " \
-      "JOIN Music AS mw ON t.work_bgm = mw.id JOIN Music AS mb ON t.break_bgm = mb.id WHERE user_id = %s AND comp_flg = 0;"
+      "JOIN Music AS mw ON t.work_bgm = mw.id JOIN Music AS mb ON t.break_bgm = mb.id WHERE user_id = %s AND comp_flg = 0 ORDER BY id DESC;"
   try:
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
