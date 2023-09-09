@@ -1,5 +1,4 @@
-# パッケージのimport
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 # viewsの読み込み
 from views.user_register import user_register
 from views.todo_top import todo_top
@@ -29,6 +28,12 @@ app.register_blueprint(todo_reg)  # todo登録
 app.register_blueprint(login)  # ログイン
 app.register_blueprint(todo_edit)  # todo編集
 app.register_blueprint(todo_finished)  # todo完了
+
+
+# セッションを初期化
+@app.before_request
+def before_request():
+  session.modified = True
 
 
 # Topページ

@@ -58,12 +58,12 @@ def login(mailaddress, password):
 
 
 def userid_search(mail):
-  sql = "SELECT id FROM users where mai = %s"
+  sql = "SELECT id FROM users where mail = %s"
   try:
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute(sql, (mail,))
-    userid = cursor.fetchone()
+    userid = cursor.fetchone()[0]
   except psycopg2.DatabaseError:
     userid = "error"
   finally:
