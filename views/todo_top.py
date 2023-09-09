@@ -1,5 +1,6 @@
-from flask import Blueprint, render_template, session, redirect, url_for
+from flask import Blueprint, render_template, session, redirect
 import DB.todo_top_db as db
+
 todo_top = Blueprint('todo_top', __name__)
 
 
