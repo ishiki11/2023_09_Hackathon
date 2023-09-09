@@ -5,8 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/static/css/todo_register.css" />
     <title>ToDo編集</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/css/header.css" />
   </head>
   <body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <!-- ↓ログアウトボタンのあるページのみ -->
+      <a href="/logout" class="logout">ログアウト</a>
+      <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+      <a href="/todo_list"class="todo_top">戻る</a>
+    </div>
     {% if error != null %}
     <p>{{error}}</p>
     {% endif %}
