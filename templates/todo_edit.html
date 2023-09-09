@@ -1,41 +1,41 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/css/todo_register.css">
-  <title>ToDo編集</title>
-</head>
-<body>
-  {% if error != null %}
-<p>{{error}}</p>
-{% endif %}
-<div class="register_form">
-    <form action="/todo_edit_exe/{{todo[0][0]}}" method="post">
-    <p>ToDoの内容</p>
-    <input type="text" placeholder="{{todo[0][2]}}" name="task">
-    <p>目標時間</p>
-      <input type="text" placeholder="{{todo[0][3]}}" name="target_time">
-      <p>作業中のBGM</p>
-      <select name="work_bgm">
-        {%for buyed_music in music%}
-        <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
-        {%endfor%}
-      </select>
-      <p>休憩中のBGM</p>
-      <select name="break_bgm">
-        {%for buyed_music in music%}
-        <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
-        {%endfor%}
-      </select>
-      <p>優先度</p>
-      <select name="priority">
-        <option value="0">高</option>
-        <option value="1">中</option>
-        <option value="2">低</option>
-      </select>
-      <input type="submit"value="編集">
-    </form>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/todo_register.css" />
+    <title>ToDo編集</title>
+  </head>
+  <body>
+    {% if error != null %}
+    <p>{{error}}</p>
+    {% endif %}
+    <div class="register_form">
+      <form action="/todo_editer/{{todo[0][0]}}" method="post">
+        <p>ToDoの内容</p>
+        <input type="text" placeholder="{{todo[0][2]}}" name="task" />
+        <p>目標時間</p>
+        <input type="text" placeholder="{{todo[0][3]}}" name="target_time" />
+        <p>作業中のBGM</p>
+        <select name="work_bgm">
+          {%for buyed_music in music%}
+          <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
+          {%endfor%}
+        </select>
+        <p>休憩中のBGM</p>
+        <select name="break_bgm">
+          {%for buyed_music in music%}
+          <option value="{{buyed_music[1]}}">{{buyed_music[5]}}</option>
+          {%endfor%}
+        </select>
+        <p>優先度</p>
+        <select name="priority">
+          <option value="0">高</option>
+          <option value="1">中</option>
+          <option value="2">低</option>
+        </select>
+        <input type="submit" value="編集" />
+      </form>
     </div>
-</body>
+  </body>
 </html>
