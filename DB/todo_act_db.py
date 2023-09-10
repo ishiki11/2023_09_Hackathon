@@ -38,7 +38,7 @@ def finish_todo(get_point, todo_id, user_id):
 
 # todoの更新
 def update_todo(get_point, todo_id, user_id, ):
-  sql = "UPDATE todo SET comp_flg = 1, get_point = %s WHERE id = %s AND user_id = %s"
+  sql = "UPDATE todo SET comp_flg = 1, get_point = get_point + %s WHERE id = %s AND user_id = %s"
 
   try:
     connection = get_connection()
