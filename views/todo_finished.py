@@ -11,8 +11,4 @@ def todo_finished_list():
     # ログインへ遷移
     return redirect('/')
   todo = db.todo_finished_list(user_id)
-  break_bgm = db.todo_finished_break(user_id)
-  get_todo = [[]]*len(todo)
-  for i in range(len(todo)):
-    get_todo[i] = todo[i]+break_bgm[i]
-  return render_template('todo_finished.html', todo=get_todo)
+  return render_template('todo_finished.html', todo=todo)
