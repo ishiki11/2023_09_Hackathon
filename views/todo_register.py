@@ -8,7 +8,6 @@ todo_reg = Blueprint('todo_reg', __name__)
 @todo_reg.route('/todo_register', methods=['GET'])
 def todo_register():
   user_id = session.get('id')
-  # 後で消す
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -19,11 +18,10 @@ def todo_register():
 @todo_reg.route('/todo_register',  methods=['POST'])
 def todo_register_exe():
   user_id = session.get('id')
-  error = ""
-  # 後で消す
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
+  error = ""
   task = request.form.get('task', type=str)
   target_time = request.form.get('target_time', type=str)
   work_bgm = request.form.get('work_bgm', type=int)
