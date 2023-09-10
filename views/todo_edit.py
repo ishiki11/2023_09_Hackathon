@@ -8,7 +8,6 @@ todo_edit = Blueprint('todo_edit', __name__)
 @todo_edit.route('/todo_editer/<param>', methods=['GET'])
 def todo_editer(param):
   user_id = session.get('id')
-
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -31,7 +30,6 @@ def todo_editer(param):
 def todo_editer_exe(param):
   user_id = session.get('id')
   error = ""
-
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -69,7 +67,7 @@ def todo_editer_exe(param):
 
   # 入力値チェック
   if len(task) > 255 | len(target_time) > 255:  # 文字数
-    error = "入力数が多すぎます"
+    error = "入力文字数が多すぎます"
   if db.usermusic_search(user_id, work_bgm) is None or\
           db.usermusic_search(user_id, break_bgm) is None:  # usermusicにある音楽を選択しているか
     error = "音楽を正しく設定してください"
