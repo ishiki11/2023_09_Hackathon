@@ -1,51 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="static/css/user_edit.css">
-  <title>利用者編集</title>
-</head>
-<body>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="static/css/user_edit.css" />
+    <title>利用者編集</title>
+    <!-- font読み込み -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+    rel="stylesheet"
+  />
+  <!-- ヘッダーcss読み込み -->
+  <link rel="stylesheet" href="/static/css/header.css" />
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <!-- ↓ログアウトボタンのあるページのみ -->
+      <a href="/logout" class="logout">ログアウト</a>
+      <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+      <a href="/todo_list" class="todo_top">戻る</a>
+    </div>
 
-  {% if error != null %}
-  <p style="color:red">{{error}}</p>
-  {% endif %}
+    {% if error != null %}
+    <p style="color: red" class="error">{{error}}</p>
+    {% endif %} {% if msg != null %}
+    <p style="color: blue" class="msg">{{msg}}</p>
+    {% endif %}
 
+    <div class="editcenter">
+      <form action="/user_edit" method="post">
+        <p>
+          ユーザー名<br />
+          <input
+            type="text"
+            name="username"
+            placeholder={{ data[4] }}
+            {% if old!=null and old[1]!="" %} value={{ old[1] }} {% endif %}
+          />
+        </p>
 
-  {% if msg != null %}
-  <p style="color:blue">{{msg}}</p>
-  {% endif %}
+        <p>
+          メールアドレス<br />
+          <input
+            type="email"
+            name="mail"
+            placeholder={{ data[1] }}
+            {% if old!=null and old[0]!="" %} value={{ old[0] }} {% endif %}
+          />
+        </p>
 
-  <div class="editcenter">
-    <form action="/edit_exe" method="post">
-
-      <p>ユーザー名<br>
-        <input type="text" name="username" placeholder="" value="{{row[1]}}"></p>
-
-     <p>メールアドレス<br>
-       <input type="email" name="mail" placeholder="" value="{{row[0]}}"></p>
-
-       <p>
-        <div class="edit_form_group">
-         <div class="edit_label">
-           <div class="">パスワード</div>
-           <div class="rule2">※パスワードは4文字以上、大文字小文字混合の英数字のみで入力してください</div>
-         </div>
-         <div class="edit_form">
-           <div    class=""><input type="password" name="pw" required></div>
-         </div>
+        <div class="edit">
+          <p><input type="submit" value="変更" id="button" /></p>
         </div>
-       </p>
-
-     <p>確認パスワード<br>
-       <input type="password" name="pw2" ></p>
-
-      <div class="edit">
-      <p><input type="submit" value="変更" id="button"></p>
+      </form>
+      <div class="a-tag">
+        <a href="/password_edit">パスワードを編集</a>
       </div>
-
-    </form>
-  </div>
-</body>
+    </div>
+  </body>
 </html>
