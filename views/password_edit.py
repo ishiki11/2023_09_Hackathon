@@ -9,7 +9,6 @@ password_edit = Blueprint('password_edit', __name__, '/password_edit')
 @password_edit.route('/password_edit')
 def pass_edit():
   user_id = session.get('id')
-  user_id = 1
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -25,7 +24,6 @@ def pass_edit():
 @password_edit.route('/password_edit', methods=['POST'])
 def pass_edit_exe():
   user_id = session.get('id')
-  user_id = 1
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
