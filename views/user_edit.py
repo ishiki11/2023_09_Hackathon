@@ -8,7 +8,6 @@ user_edit = Blueprint('user_edit', __name__, '/user_edit')
 @user_edit.route('/user_edit')
 def edit():
   user_id = session.get('id')
-  user_id = 1
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -25,7 +24,6 @@ def edit():
 def edit_exe():
   user_id = session.get('id')
   error = ""
-  user_id = 1
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -40,8 +38,9 @@ def edit_exe():
     username = user[4]
 
   # 入力値チェック
-  if len(mail) > 255 | len(username) > 255:  # 文字数
+  if len(mail) > 255 or len(username) > 255:  # 文字数
     error = "入力文字数が多すぎます"
+    print(error)
 
   # 値保持
   old = [mail, username]
