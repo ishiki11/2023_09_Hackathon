@@ -25,7 +25,8 @@
   <body>
     <div class="header">
       <h1 class="title">Pomodoro</h1>
-      <a href="/logout" class="logout">ログアウト</a>
+      <!-- ↓ログアウトボタンのあるページのみ -->
+      <a href="{{ url_for('user_logout.logout') }}" class="logout">ログアウト</a>
     </div>
     <div class="user-name">ようこそ {{ username[0] }} さん</div>
     <div class="content">
@@ -81,10 +82,10 @@
       {% endif %}
       <div class="column">
         <a class="a-tag" href="/user_ranking">ランキング</a>
-        <a class="a-tag" href="/user_edit">ユーザー情報の編集</a>
+        <a class="a-tag" href="{{ url_for('user_edit.edit') }}">ユーザー情報の編集</a>
         <a class="a-tag" href="/purchase">ポイント交換</a>
-        <a class="a-tag" href="/todo_finished_list">過去のToDo一覧</a>
-        <a class="todo_register" href="/todo_register">ToDoの作成</a>
+        <a class="a-tag" href="{{ url_for('todo_finished.todo_finished_list') }}">過去のToDo一覧</a>
+        <a class="todo_register" href="{{ url_for('todo_reg.todo_register') }}">ToDoの作成</a>
       </div>
     </div>
   </body>
