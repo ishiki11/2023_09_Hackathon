@@ -1,28 +1,70 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/todo_top.css">
-    <title>ToDOtop</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/static/css/todo_finished.css" />
+    <title>過去のToDo一覧</title>
+    <!-- font読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ヘッダーcss読み込み -->
+    <link rel="stylesheet" href="/static/css/header.css" />
   </head>
   <body>
-    <header>
-      <p>Pomodoro</p><p>ログアウト</p>
-    </header>
-<div class="todo-list">
-{% for ToDo in todo%}
-<div class="todo-list1">
-<p class="task">{{ToDo[2]}}</p>
-<p>目標 : {{ToDo[3]}}</p>
-  </div>
-  <div class="todo-list2">
-<p class="bgm">{{ToDo[4]}}ポイントを獲得</p>
-  </div>
-  <div class="todo-list3">
-<a href="/todo_act/{{ToDo[0]}}">再実行</a>
-  </div>
-{% endfor %}
-</div>
-</body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <!-- ↓ログアウトボタンのあるページのみ -->
+      <a href="/logout" class="logout">ログアウト</a>
+      <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+      <a href="/todo_list" class="todo_top">戻る</a>
+    </div>
+    <div class="subtitle">完了したToDo一覧</div>
+    {% if todo|length > 0 %}
+    <!-- スクロール可能なコンテナ -->
+    <div class="scrollable-container">
+      <table border="2" class="todo-list">
+        {% for ToDo in todo %}
+        <tr class="todo-item">
+          <td class="td1">
+            <div class="todo-list1">
+              <div class="task">{{ToDo[2]}}</div>
+              <div class="target">
+                <div class="target-text">目標 : {{ToDo[3]}}</div>
+                {% if ToDo[8] == 0 %}
+                <div class="hight">高</div>
+                {% elif ToDo[8] == 1 %}
+                <div class="mid">中</div>
+                {% else %}
+                <div class="low">低</div>
+                {% endif %}
+              </div>
+            </div>
+          </td>
+          <td class="td2">
+            <div class="todo-list2">
+              <div>{{ ToDo[4] }}ポイントを獲得</div>
+            </div>
+          </td>
+          <td class="td3">
+            <div class="todo-list3">
+              <a href="/todo_act/{{ToDo[0]}}" class="td3-a">再実行</a>
+            </div>
+          </td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+    {% else %}
+    <div class="not-todo">
+      <div>完了したToDoがありません。</div>
+      <div>ToDoを作成して実行してみましょう。</div>
+      <div>ToDo作成は<a href="/todo_register">コチラから</a></div>
+    </div>
+    {% endif %}
+  </body>
 </html>

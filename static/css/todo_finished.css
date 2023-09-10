@@ -1,0 +1,134 @@
+@charset "utf-8";
+body {
+  font-size: 16px;
+  margin: 0;
+}
+
+/* 完了したToDo一覧 */
+.subtitle {
+  text-align: center;
+  font-size: 1.5rem;
+  margin-top: 5vh;
+}
+
+/* スクロール可能なコンテナのスタイル */
+.scrollable-container {
+  max-height: 60vh; /* コンテナの最大高さを設定 */
+  overflow-y: auto; /* 縦方向のスクロールバーを表示 */
+  /* 中央寄せ */
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
+}
+
+/* todoタスク名 */
+.task {
+  text-align: center;
+  font-size: 2rem;
+}
+/* table */
+.todo-list {
+  width: 75vw;
+  border-spacing: 0;
+}
+
+/* 目標 */
+.td1 {
+  width: 25vw;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 1.5rem;
+}
+.todo-list1 {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+.target {
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.hight,
+.mid,
+.low {
+  font-size: 1.3rem;
+  font-weight: 600;
+  width: 2rem;
+  height: 2rem;
+  line-height: 2rem;
+  border-radius: 50%;
+  text-align: center;
+}
+.hight {
+  background-color: #95d2ff;
+}
+.mid {
+  background-color: #ff9595;
+}
+.low {
+  background-color: #96ffa6;
+}
+
+/* 音楽のやつ */
+.td2 {
+  width: 40vw;
+  font-size: 1.5rem;
+}
+.todo-list2 {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: space-around;
+}
+.work-text,
+.break-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+.work-text {
+  color: #0c24ff;
+}
+.break-text {
+  color: #27d038;
+}
+
+/* 実行、編集 */
+.td3 {
+  width: 10vw;
+}
+.todo-list3 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 1.2rem;
+}
+.td3-a {
+  text-decoration: none;
+  color: black;
+  padding: 0.2rem 0.8rem;
+  border-radius: 5rem;
+  background-color: #d9d9d9;
+}
+.td3-a:hover {
+  background-color: #c9c9c9;
+}
+
+/* todoがなかった時 */
+.not-todo {
+  width: 50vw;
+  font-size: 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 20vh;
+}
