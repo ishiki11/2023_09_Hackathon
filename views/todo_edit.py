@@ -76,7 +76,7 @@ def todo_editer_exe(param):
   # 正規表現パターン　受け付ける00時間00分　時間のみ分のみでも通る
   time_pattern = re.compile(r'(^[1-9]\d?時間[1-9]\d?分$)|(^[1-9]\d?時間$)|(^[1-9]\d?分$)')
   if not time_pattern.match(target_time):
-    error = "目標時間を正しく設定してください 例：○○時間○○分"
+    error = "目標時間を正しく設定してください 例：○時間○○分、○時間、○○分"
 
   # エラーがある時
   if error != "":
