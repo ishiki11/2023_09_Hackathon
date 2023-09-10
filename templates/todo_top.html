@@ -20,7 +20,7 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/todo_top.css') }}"
     />
-    <title>todo一覧</title>
+    <title>ToDo一覧</title>
   </head>
   <body>
     <div class="header">
@@ -75,15 +75,15 @@
       </div>
       {% else %}
       <div class="not-todo">
-        <div>TODOリストを管理できます。</div>
-        <div>新しいTODOを作成して実行してみましょう。</div>
+        <div>ToDoリストを管理できます。</div>
+        <div>新しいToDoを作成して実行してみましょう。</div>
       </div>
       {% endif %}
       <div class="column">
         <a class="a-tag" href="/user_ranking">ランキング</a>
         <a class="a-tag" href="/user_edit">ユーザー情報の編集</a>
         <a class="a-tag" href="/purchase">ポイント交換</a>
-        <a class="a-tag" href="/todo_finished_list">過去のToDoの一覧</a>
+        <a class="a-tag" href="/todo_finished_list">過去のToDo一覧</a>
         <a class="todo_register" href="/todo_register">ToDoの作成</a>
       </div>
     </div>
