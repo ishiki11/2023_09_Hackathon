@@ -64,5 +64,23 @@ def update_user(user_id, mail, username):
     return flg
 
 
+# ユーザ編集 パスワード
+def update_password(user_id, pw):
+  sql = 'UPDATE Users SET hashed_password = %s, salt = %s WHERE id = %s'
+  flg = False
 
+  salt = get_salt()
+  hashed_password = get_hash(pw, salt)
 
+  try:
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(sql, (hashed_password, salt, user_id,))
+    connection.commit()
+  except psycopg2.DatabaseError as e:
+    print(e)
+  finally:
+    flg = True
+    cursor.close()
+    connection.close()
+    return flg
