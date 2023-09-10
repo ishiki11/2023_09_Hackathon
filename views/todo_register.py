@@ -28,7 +28,7 @@ def todo_register_exe():
   break_bgm = request.form.get('break_bgm', type=int)
   priority = request.form.get('priority', type=int)
   todo_inf = [user_id, task, target_time, work_bgm, break_bgm, priority]
-  print(todo_inf)
+
   # 入力値チェック
   if len(task) > 255 | len(target_time) > 255:
     # 文字数
