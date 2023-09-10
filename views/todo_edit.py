@@ -8,7 +8,6 @@ todo_edit = Blueprint('todo_edit', __name__)
 @todo_edit.route('/todo_editer/<param>', methods=['GET'])
 def todo_editer(param):
   user_id = session.get('id')
-
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -31,7 +30,6 @@ def todo_editer(param):
 def todo_editer_exe(param):
   user_id = session.get('id')
   error = ""
-
   if user_id is None:
     # ログインへ遷移
     return redirect('/')
@@ -69,7 +67,7 @@ def todo_editer_exe(param):
 
   # 入力値チェック
   if len(task) > 255 | len(target_time) > 255:  # 文字数
-    error = "入力数が多すぎます"
+    error = "入力文字数が多すぎます"
   if db.usermusic_search(user_id, work_bgm) is None or\
           db.usermusic_search(user_id, break_bgm) is None:  # usermusicにある音楽を選択しているか
     error = "音楽を正しく設定してください"
@@ -78,7 +76,7 @@ def todo_editer_exe(param):
   # 正規表現パターン　受け付ける00時間00分　時間のみ分のみでも通る
   time_pattern = re.compile(r'(^[1-9]\d?時間[1-9]\d?分$)|(^[1-9]\d?時間$)|(^[1-9]\d?分$)')
   if not time_pattern.match(target_time):
-    error = "目標時間を正しく設定してください 例：○○時間○○分"
+    error = "目標時間を正しく設定してください 例：○時間○○分、○時間、○○分"
 
   # エラーがある時
   if error != "":
