@@ -33,7 +33,7 @@
   {% endif %}
 
 
-    <form action="{{url_for('user_register.register_exe')}}" method="post">
+    <form action="/register_exe" method="post">
 
       <p>ユーザー名<br>
         <input type="text" name="username" required></p>
@@ -42,14 +42,14 @@
      <p>メールアドレス<br>
        <input type="email" name="mail" required></p>
 
-    <p>
+       <p>
         <div class="register_form_group">
          <div class="register_label">
            <div class="">パスワード</div>
            <div class="rule">※パスワードは4文字以上、大文字小文字混合の英数字のみで入力してください</div>
          </div>
          <div class="register_form">
-           <div    class=""><input type="password" name="pw" required></div>
+           <div class=""><input type="password" name="pw" required></div>
          </div>
         </div>
        </p>
