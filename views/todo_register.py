@@ -30,7 +30,7 @@ def todo_register_exe():
   todo_inf = [user_id, task, target_time, work_bgm, break_bgm, priority]
 
   # 入力値チェック
-  if len(task) > 255 | len(target_time) > 255:
+  if len(task) > 255 or len(target_time) > 255:
     # 文字数
     error = "入力文字数が多すぎます"
 
