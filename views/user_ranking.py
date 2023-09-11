@@ -1,10 +1,14 @@
-from flask import Flask, Blueprint, render_template
+from flask import Flask, Blueprint, render_template, session, redirect
 import os, psycopg2
 ranking = Blueprint('ranking', __name__)
 
 
 @ranking.route('/user_ranking', methods=['GET'])
 def user_ranking():
+  user_id = session.get('id')
+  if user_id is None:
+  # ログインへ遷移
+    return redirect('/')
   userid = 1 #セッションで持ってくる
   userrank = user_rank()
   myranking = myrank(userid)
@@ -23,6 +27,8 @@ def user_ranking():
       rank.append([rank_num,urank[0],urank[1]])
     count+=1
   return render_template('user_ranking.html',rank=rank,myrank=myranking)
+
+
 def user_rank():
   sql = "SELECT username, rank_rate FROM Users ORDER BY rank_rate DESC LIMIT 10;"
   connection = None
@@ -41,6 +47,8 @@ def user_rank():
     if connection:
       connection.close()
   return rank
+
+
 def myrank(userid):
   sql = "SELECT rank_rate FROM Users where id = %s"
   connection = None
