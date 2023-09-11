@@ -33,7 +33,7 @@
   {% endif %}
 
 
-    <form action="/register_exe" method="post">
+    <form action="{{url_for('user_register.register_exe')}}" method="post">
 
       <p>ユーザー名<br>
         <input type="text" name="username" required></p>

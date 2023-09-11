@@ -58,7 +58,8 @@ def register_exe():
     print(id)
     if count == 1:
         session["id"] = id
-        return redirect('/todo_top') 
+        db.insert_user_music(id)
+        return redirect('/todo_list') 
      
     else:
         error='登録失敗'
