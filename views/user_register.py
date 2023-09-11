@@ -26,7 +26,7 @@ def register_exe():
 
 
 
-    if username == '' or pw == '' or mail == '':
+    if username == '' or pw == '' or mail == '' or pw2 == '':
         a = '入力されていない項目があります'
         return render_template('user_register.html',a=a)
 
@@ -35,7 +35,7 @@ def register_exe():
         error = 'パスワードが一致していません'
         return render_template('user_register.html', error=error)
 
-    if len(pw) < 5:
+    if len(pw) < 4:
       error = 'パスワートを4文字以上にしてください'
       return render_template('user_register.html',error=error)
 
@@ -47,7 +47,10 @@ def register_exe():
       error = 'パスワードは英数字のみを使用してください'
       return render_template('user_register.html',error=error)
 
-
+    if len(mail) > 255 or len(username) > 255 or len(pw) > 255:
+    # 文字数
+      error = "入力文字数が多すぎます"
+      return render_template('user_register.html',error=error)
 
     count = db.insert_user(mail, pw, username)
     print("session")
@@ -55,14 +58,10 @@ def register_exe():
     print(id)
     if count == 1:
         session["id"] = id
-        return redirect('/user_edit')
-        # return redirect('/todo_top') 本来ならこっち
-        # return render_template('user_register.html')
+        db.insert_user_music(id)
+        return redirect('/todo_list') 
+     
     else:
         error='登録失敗'
         return render_template('user_register.html',error=error)
 
-
-
-
-      # ページ遷移でしか登録失敗の画面を出せない

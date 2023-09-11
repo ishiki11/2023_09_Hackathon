@@ -64,6 +64,27 @@ def insert_user(mail, pw, username):
 
     return count
 
+
+def insert_user_music(user_id):
+    sql = 'INSERT INTO Usermusic VALUES (default, 1, %s),(default, 2, %s),(default, 3, %s)'
+
+    try : # 例外処理
+        connection = get_connection()
+        cursor = connection.cursor()
+        cursor.execute(sql, (user_id, user_id, user_id,))
+        connection.commit()
+
+    except psycopg2.DatabaseError as e: # Java でいうcatch 失敗した時の処理をここに書く
+        print(e)
+        count = 0 # 例外が発生したら0 をreturn する。
+
+    finally: # 成功しようが、失敗しようが、close する。
+        cursor.close()
+        connection.close()
+
+
+
+
 def select_user(mail):
     id = None
     sql = 'SELECT id from users where mail= %s'
