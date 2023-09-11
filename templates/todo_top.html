@@ -81,7 +81,7 @@
       </div>
       {% endif %}
       <div class="column">
-        <a class="a-tag" href="/user_ranking">ランキング</a>
+        <a class="a-tag" href="{{ url_for('user_ranking.user_ranking') }}">ランキング</a>
         <a class="a-tag" href="{{ url_for('user_edit.edit') }}">ユーザー情報の編集</a>
         <a class="a-tag" href="/purchase">ポイント交換</a>
         <a class="a-tag" href="{{ url_for('todo_finished.todo_finished_list') }}">過去のToDo一覧</a>
