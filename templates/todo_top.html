@@ -66,7 +66,7 @@
             <td class="td3">
               <div class="todo-list3">
                 <a href="{{ url_for('todo_act.act', param=ToDo[0]) }}" class="td3-a">実行</a>
-                <a href="{{ url_for('todo_edit.todo_editor', param=ToDo[0]) }}" class="td3-a">編集</a>
+                <a href="{{ url_for('todo_edit.todo_editer', param=ToDo[0]) }}" class="td3-a">編集</a>
               </div>
             </td>
           </tr>
@@ -81,7 +81,7 @@
       </div>
       {% endif %}
       <div class="column">
-        <a class="a-tag" href="{{ url_for('user_ranking.user_ranking') }}">ランキング</a>
+        <a class="a-tag" href="{{ url_for('ranking.user_ranking') }}">ランキング</a>
         <a class="a-tag" href="{{ url_for('user_edit.edit') }}">ユーザー情報の編集</a>
         <a class="a-tag" href="/purchase">ポイント交換</a>
         <a class="a-tag" href="{{ url_for('todo_finished.todo_finished_list') }}">過去のToDo一覧</a>
