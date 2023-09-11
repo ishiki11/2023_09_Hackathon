@@ -1,0 +1,59 @@
+.editcenter {
+  margin: auto;
+  margin-top: 20vh;
+  width: 50%;
+  font-size: 1.2rem;
+}
+.editcenter input:not([type="button"]) {
+  width: 100%;
+  padding: 5px;
+  font-size: 1.2rem;
+}
+.editcenter input[type="button"] {
+  padding: 10px;
+  width: 100px;
+  margin: 50px;
+  margin-left: 40%;
+  border-radius:10px;
+}
+.edit_form_group {
+  display: flex;
+  flex-direction: column;
+}
+.edit_label {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.rule2 {
+  font-size:12px;
+  padding-left: 50px;
+}
+.edit_form {
+  display: flex;
+  flex-direction: column;
+}
+.edit {
+  margin-top: 40px;
+}
+.error {
+  position: absolute;
+  font-size: 1.3rem;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+.msg {
+  position: absolute;
+  font-size: 1.3rem;
+  top: 20vh;
+  left: 50%;
+  transform: translateX(-50%);
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+}
+.a-tag {
+  text-align: center;
+}
