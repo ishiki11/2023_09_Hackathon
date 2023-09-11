@@ -32,10 +32,14 @@
     <p style="color:red">{{error}}</p>
     {% endif %}
   <div class= "login"><form action="{{url_for('login.login_exe')}}" method="post">
-    メールアドレス<br>
-    <input type="text" placeholder="mailaddress" name="mailaddress" value="{{data.mailaddress if data is defined else ''}}"><br>
-    パスワード<br>
-    <input type="password" placeholder="password" name="password" value="{{data.password if data is defined else ''}}"><br>
+    <p>メールアドレス<br>
+      <input type="email" name="mail" required></p>
+      <p>
+          <div class="">パスワード</div>
+        </div>
+        <div class="register_form">
+          <div class=""><input type="password" name="pw" required></div>
+      </p>
     <p><input type="submit" value="ログイン" id="button"></p>
   </form>
   <a href="user_register">アカウントをお持ちでない方はこちら</a>

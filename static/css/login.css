@@ -34,7 +34,7 @@ body{
 }
 .loginform{
   position: relative;
-  top: 25px;
+  top: 5px;
   left: -75px;
 }
 .loginform input:not([type="button"]) {
@@ -129,4 +129,8 @@ body{
   margin: 50px;
   margin-left: 40%;
   border-radius:10px;
+}
+.register_form {
+  display: flex;
+  flex-direction: column;
 }
