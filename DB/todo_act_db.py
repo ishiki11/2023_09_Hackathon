@@ -23,7 +23,7 @@ def get_todo(todo_id, user_id):
     cursor.execute(sql, (todo_id, user_id,))
     todo = cursor.fetchone()
   except psycopg2.DatabaseError as e:  # catchの処理
-    todo = "error"
+    print(e)
   finally:
     cursor.close()
     connection.close()
@@ -38,7 +38,7 @@ def finish_todo(get_point, todo_id, user_id):
 
 # todoの更新
 def update_todo(get_point, todo_id, user_id, ):
-  sql = "UPDATE todo SET comp_flg = 1, get_point = %s WHERE id = %s AND user_id = %s"
+  sql = "UPDATE todo SET comp_flg = 1, get_point = get_point + %s WHERE id = %s AND user_id = %s"
 
   try:
     connection = get_connection()
