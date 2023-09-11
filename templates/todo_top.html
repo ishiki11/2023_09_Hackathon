@@ -65,8 +65,8 @@
             </td>
             <td class="td3">
               <div class="todo-list3">
-                <a href="/todo_act/{{ToDo[0]}}" class="td3-a">実行</a>
-                <a href="/todo_editer/{{ToDo[0]}}" class="td3-a">編集</a>
+                <a href="{{ url_for('todo_act.act', param=ToDo[0]) }}" class="td3-a">実行</a>
+                <a href="{{ url_for('todo_edit.todo_editor', param=ToDo[0]) }}" class="td3-a">編集</a>
               </div>
             </td>
           </tr>
