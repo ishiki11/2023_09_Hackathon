@@ -3,13 +3,49 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/todo_top.css">
+    <!-- font読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <!-- header css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <!-- ページのcss -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/user_ranking.css') }}"
+    />
     <title>ランキング</title>
   </head>
   <body>
-    <p>あなたのポイント:{{myrank[0][0]}}</p>
-    {%for Ranking in rank%}
-<p>{{Ranking[0]}} {{Ranking[1]}} {{Ranking[2]}}</p>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <a href="{{url_for('user_logout.logout')}}" class="logout">ログアウト</a>
+      <a href="{{url_for('todo_top.todo_list')}}" class="todo_top">戻る</a>
+    </div>
+    <p class="mypoint">あなたのポイント:{{myrank[0][0]}}ポイント</p>
+    <div class="content">
+      
+    <table border=2 class="ranking-list">
+      {%for Ranking in rank%}
+      <tr class="ranking-item {{'first' if Ranking[0]==1 else 'second' if Ranking[0]==2 else 'third' if Ranking[0]==3 else ''}}">
+        <td class="ranking-list1">
+          <div class="rank">{{Ranking[0]}}</div>
+        </td>
+        <td class="ranking-list2">
+          <div class="user_name">{{Ranking[1]}}</div>
+        </td>
+        <td class="ranking-list3">
+          <div class="point">{{Ranking[2]}}ポイント</div>
+        </td>
+      </div>
 {% endfor %}
+      </tr>
+    </table>
 </body>
 </html>

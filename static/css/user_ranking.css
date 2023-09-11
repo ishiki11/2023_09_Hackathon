@@ -1,0 +1,73 @@
+@charset "utf-8";
+body {
+    font-size: 16px;
+    margin: 0;
+  }
+
+.mypoint{
+    margin-top: 1vh;
+    margin-bottom: 1vh;
+    text-align: center;
+    font-size: 1.3rem;
+}
+/*中身 */
+.content {
+    margin-bottom: 2vh;
+    display: flex;
+    justify-content: center;
+    font-size: 1rem;
+    max-height: 70vh;
+  }
+
+/* ランキング */
+.ranking-list {
+    width: 75vw;
+    border-spacing: 0;
+  }
+  .ranking-list2,.ranking-list3,.ranking-list1 {
+    width: 40vw;
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+.first{
+    height: 10vh;
+    .ranking-list1{
+        background-color: #FAC94A;
+        font-size: 2.5rem;
+    }
+    .ranking-list2{
+        font-size: 2.5rem;
+    }
+    .ranking-list3{
+        font-size: 2.5rem;
+    }
+
+}
+
+.second{
+    height: 7vh;
+    .ranking-list1{
+        font-size: 2.0rem;
+        background-color: #E1E1E1;
+    }
+    .ranking-list2{
+        font-size: 2.0rem;
+    }
+    .ranking-list3{
+        font-size: 2.0rem;
+    }
+}
+.third{
+    height: 7vh;
+    .ranking-list1{
+        font-size: 2.0rem;
+        background-color: #D45151;
+    }
+    .ranking-list2{
+        font-size: 2.0rem;
+    }
+    .ranking-list3{
+        font-size: 2.0rem;
+    }
+}
