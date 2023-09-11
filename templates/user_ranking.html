@@ -7,7 +7,7 @@
     <title>ランキング</title>
   </head>
   <body>
-    <p>あなたのポイント:{{myrank}}</p>
+    <p>あなたのポイント:{{myrank[0][0]}}</p>
     {%for Ranking in rank%}
 <p>{{Ranking[0]}} {{Ranking[1]}} {{Ranking[2]}}</p>
 {% endfor %}
