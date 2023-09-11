@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/todo_top.css">
+    <title>ランキング</title>
+  </head>
+  <body>
+    <p>あなたのポイント:{{myrank[0][0]}}</p>
+    {%for Ranking in rank%}
+<p>{{Ranking[0]}} {{Ranking[1]}} {{Ranking[2]}}</p>
+{% endfor %}
+</body>
+</html>
