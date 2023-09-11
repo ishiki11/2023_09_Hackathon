@@ -3,22 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <link rel="stylesheet" href="static/css/login.css">
+  <title>login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+    rel="stylesheet"
+  />
+  <!-- ヘッダーcss読み込み -->
+  <link rel="stylesheet" href="/static/css/header.css" />
 </head>
+
 <body>
-  <header>Pomodoro</header>
-  <h1>Pomodoro</h1>
-  <p>ポモドーロテクニックを活用して</p>
-  <p>タスクの効率化と生産性、</p>
-  <p>集中力の向上を</p>
-  {% if error != null %}
-  <p style="color:red">{{error}}</p>
-  {% endif %}
-  <form action="{{url_for('login.login_exe')}}" method="post">
-    メールアドレス:<input type="text" name="mailaddress" value="{{data.mailaddress if data is defined else ''}}"><br>
-    パスワード：<input type="password" name="password" value="{{data.password if data is defined else ''}}"><br>
-    <button type="submit">ログイン</button>
+  <div class="header">
+    <h1 class="title">Pomodoro</h1>
+  </div>
+  <div class="contents">
+  <div class="body"></div>
+    <div class="grad">
+      <div class="rogo">Pomodoro</div>
+      <div>ポモドーロテクニックを活用して</div>
+      <div>タスクの効率化と生産性、</div>
+      <div>集中力の向上を</div>
+    </div>
+  <div class="loginform">
+    {% if error != null %}
+    <p style="color:red">{{error}}</p>
+    {% endif %}
+  <div class= "login"><form action="{{url_for('login.login_exe')}}" method="post">
+    <p>メールアドレス<br>
+      <input type="email" name="mail" required></p>
+      <p>
+          <div class="">パスワード</div>
+        </div>
+        <div class="register_form">
+          <div class=""><input type="password" name="pw" required></div>
+      </p>
+    <p><input type="submit" value="ログイン" id="button"></p>
   </form>
-  <a href="user_register">アカウントをお持ちでない方はこちら</a>
+  <a href="{{url_for('user_register.register')}}">アカウントをお持ちでない方はこちら</a>
+  </div>
+  </div>
 </body>
 </html>
