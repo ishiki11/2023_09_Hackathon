@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/todo_act.css') }}"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <!-- ヘッダーcss読み込み -->
+    <link rel="stylesheet" href="/static/css/header.css" />
+    <title>ToDo実行</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <!-- ↓ログアウトボタンのあるページのみ -->
+      <a href="/logout" class="logout">ログアウト</a>
+    </div>
+    <div class="content">
+      <div class="sub-title">実行中のToDO</div>
+      <table class="table">
+        <tr>
+          <td colspan="2"><div class="item1">{{ data[1] }}</div></td>
+          <td class="state">
+            <div class="state flex">
+              <div class="circle" id="work-circle"></div>
+              <div class="act">実行中</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item1">目標時間：</div>
+          </td>
+          <td><div class="item2">{{ data[2] }}</div></td>
+          <td class="state">
+            <div class="flex">
+              <div class="circle" id="break-circle"></div>
+              <div class="break">休憩中</div>
+            </div>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <div class="item1">経過時間：</div>
+          </td>
+          <td>
+            <div id="total-time" class="item2">00秒</div>
+          </td>
+        </tr>
+        <tr>
+          <td><div id="break-text" class="item1">休憩までの時間：</div></td>
+          <td><div id="for-breaktime" class="item2">00秒</div></td>
+        </tr>
+        <tr>
+          <td><div class="item1">再生中の曲：</div></td>
+          <td class><div id="play-music" class="item2">{{ data[5] }}</div></td>
+        </tr>
+      </table>
+
+      <audio id="audio" loop autoplay>
+        <source src="{{ data[6] }}" type="audio/wav" />
+        <p>
+          このブラウザーはaudio要素に対応していません。<a href="{{ data[6] }}"
+            >音声ファイルへのリンク</a
+          >から御覧ください。
+        </p>
+      </audio>
+      <div class="flex">
+        <label>
+          音量<input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            id="volumeRange"
+          />
+        </label>
+        <img
+          src="{{ url_for('static', filename='images/volume.png') }}"
+          alt="音あり"
+          id="img"
+          onclick="switchMute()"
+        />
+      </div>
+
+      <div class="button flex">
+        <a href="{{ url_for('todo_top.todo_list') }}" class="cancel">中断</a>
+        <button class="finish-btn" onclick="finishBtn()">完了</button>
+      </div>
+    </div>
+    <script>
+      const todoData = {{ data | tojson | safe }};
+      console.log(todoData);
+    </script>
+    <script src="/static/js/todo_act.js"></script>
+  </body>
+</html>

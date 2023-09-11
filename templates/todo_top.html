@@ -1,39 +1,91 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../static/css/todo_top.css">
-    <title>ToDOtop</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- font読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <!-- header css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <!-- ページのcss -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/todo_top.css') }}"
+    />
+    <title>ToDo一覧</title>
   </head>
   <body>
-    <header>
-      <p>Pomodoro</p><p>ログアウト</p>
-    </header>
-    <p>ようこそ{{username}}さん</p>
-    <a class="todo_register" href="/todo_register">ToDoの作成</a>
-<div class="todo-list">
-{% for ToDo in todo%}
-<div class="todo-list1">
-<p class="task">{{ToDo[2]}}</p>
-<p>目標 : {{ToDo[3]}}</p>
-{% if ToDo[9]==1%}
-  <p class="hight">高</P>
- {% elif ToDo[9]==2 %}
-  <p class="midl">中</p>
- {% else: %}
-  <p class="low">低</p>
- {% endif %}
-  </div>
-  <div class="todo-list2">
-<p class="bgm">{{ToDo[11]}}</p><p>が作業中に流れる</p>
-<p class="bgm">{{ToDo[13]}}</p><p>が休憩中に流れる</p>
-  </div>
-  <div class="todo-list3">
-<a href="/todo_act/{{ToDo[0]}}">実行</a>
-<a href="/todo_editer/{{ToDo[0]}}">編集</a>
-  </div>
-{% endfor %}
-</div>
-</body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <a href="/logout" class="logout">ログアウト</a>
+    </div>
+    <div class="user-name">ようこそ {{ username[0] }} さん</div>
+    <div class="content">
+      {% if todo|length > 0 %}
+      <!-- スクロール可能なコンテナ -->
+      <div class="scrollable-container">
+        <table border="2" class="todo-list">
+          {% for ToDo in todo %}
+          <tr class="todo-item">
+            <td class="td1">
+              <div class="todo-list1">
+                <div class="task">{{ToDo[2]}}</div>
+                <div class="target">
+                  <div class="target-text">目標 : {{ToDo[3]}}</div>
+                  {% if ToDo[8] == 0 %}
+                  <div class="hight">高</div>
+                  {% elif ToDo[8] == 1 %}
+                  <div class="mid">中</div>
+                  {% else %}
+                  <div class="low">低</div>
+                  {% endif %}
+                </div>
+              </div>
+            </td>
+            <td class="td2">
+              <div class="todo-list2">
+                <div class="work">
+                  <div class="work-text">作業BGM</div>
+                  <div>{{ToDo[9]}}</div>
+                </div>
+                <div class="break">
+                  <div class="break-text">休憩BGM</div>
+                  <div>{{ToDo[10]}}</div>
+                </div>
+              </div>
+            </td>
+            <td class="td3">
+              <div class="todo-list3">
+                <a href="/todo_act/{{ToDo[0]}}" class="td3-a">実行</a>
+                <a href="/todo_editer/{{ToDo[0]}}" class="td3-a">編集</a>
+              </div>
+            </td>
+          </tr>
+
+          {% endfor %}
+        </table>
+      </div>
+      {% else %}
+      <div class="not-todo">
+        <div>ToDoリストを管理できます。</div>
+        <div>新しいToDoを作成して実行してみましょう。</div>
+      </div>
+      {% endif %}
+      <div class="column">
+        <a class="a-tag" href="/user_ranking">ランキング</a>
+        <a class="a-tag" href="/user_edit">ユーザー情報の編集</a>
+        <a class="a-tag" href="/purchase">ポイント交換</a>
+        <a class="a-tag" href="/todo_finished_list">過去のToDo一覧</a>
+        <a class="todo_register" href="/todo_register">ToDoの作成</a>
+      </div>
+    </div>
+  </body>
 </html>
