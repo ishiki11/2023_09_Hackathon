@@ -9,9 +9,8 @@ def user_ranking():
   if user_id is None:
   # ログインへ遷移
     return redirect('/')
-  userid = 1 #セッションで持ってくる
   userrank = user_rank()
-  myranking = myrank(userid)
+  myranking = myrank(user_id)
   print(myranking)
   print(userrank)
   count = 1
@@ -30,7 +29,7 @@ def user_ranking():
 
 
 def user_rank():
-  sql = "SELECT username, rank_rate FROM Users ORDER BY rank_rate DESC LIMIT 10;"
+  sql = "SELECT username, rank_rate FROM Users WHERE rank_rate > 0 ORDER BY rank_rate DESC LIMIT 10;"
   connection = None
   cursor = None
   try:
