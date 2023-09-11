@@ -5,26 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="static/css/login.css">
   <title>login</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+    rel="stylesheet"
+  />
+  <!-- ヘッダーcss読み込み -->
+  <link rel="stylesheet" href="/static/css/header.css" />
 </head>
+
 <body>
+  <div class="header">
+    <h1 class="title">Pomodoro</h1>
+  </div>
+  <div class="contents">
   <div class="body"></div>
-    <div class="grad"></div>
-      <div>
-      <div>Pomodoro</div>
+    <div class="grad">
+      <div class="rogo">Pomodoro</div>
       <div>ポモドーロテクニックを活用して</div>
       <div>タスクの効率化と生産性、</div>
       <div>集中力の向上を</div>
-      </div>
-  <div class="login">
-  {% if error != null %}
-  <p style="color:red">{{error}}</p>
-  {% endif %}
-  <form action="{{url_for('login.login_exe')}}" method="post">
+    </div>
+  <div class="loginform">
+    {% if error != null %}
+    <p style="color:red">{{error}}</p>
+    {% endif %}
+  <div class= "login"><form action="{{url_for('login.login_exe')}}" method="post">
+    メールアドレス<br>
     <input type="text" placeholder="mailaddress" name="mailaddress" value="{{data.mailaddress if data is defined else ''}}"><br>
+    パスワード<br>
     <input type="password" placeholder="password" name="password" value="{{data.password if data is defined else ''}}"><br>
-    <button type="submit">ログイン</button>
+    <p><input type="submit" value="ログイン" id="button"></p>
   </form>
   <a href="user_register">アカウントをお持ちでない方はこちら</a>
+  </div>
   </div>
 </body>
 </html>
