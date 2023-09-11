@@ -7,7 +7,7 @@
   <title>利用者編集</title>
 </head>
 <body>
-
+  <div class="editcenter">
   {% if error != null %}
   <p style="color:red">{{error}}</p>
   {% endif %}
@@ -17,7 +17,7 @@
   <p style="color:blue">{{msg}}</p>
   {% endif %}
 
-  <div class="editcenter">
+  
     <form action="/edit_exe" method="post">
 
       <p>ユーザー名<br>
