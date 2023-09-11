@@ -11,6 +11,7 @@ from views.login import login
 from views.todo_edit import todo_edit
 from views.todo_finished import todo_finished
 from views.password_edit import password_edit
+from views.user_ranking import ranking
 # 関数のインポート
 import string
 import random
@@ -30,6 +31,7 @@ app.register_blueprint(todo_reg)  # todo登録
 app.register_blueprint(login)  # ログイン
 app.register_blueprint(todo_edit)  # todo編集
 app.register_blueprint(todo_finished)  # todo完了
+app.register_blueprint(ranking)
 
 
 # セッションを初期化
