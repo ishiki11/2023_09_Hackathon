@@ -152,7 +152,6 @@ def purchase_music(music_id):
         # UserMusicテーブルに音楽の所有情報を追加
         add_user_music(user_id, music_id)  # ユーザーが音楽を所有する関数を作成してください
 
-        session["message"] = "購入できました"
     else:
         session["message"]="ポイントが不足しています"
     return redirect(url_for('plize_list.purchase_music_view'))

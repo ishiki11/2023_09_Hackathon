@@ -19,7 +19,7 @@
     rel="stylesheet"
     />
     {% if message != null %}
-    <p style="color: red" class="error">{{message}}</p>
+    <p style="color: red" class="error">{{session.pop('message', '')}}</p>
     {% endif %}
     <div class = "point"><p>現在のポイント: {{ user_points }}</p></div>
 
