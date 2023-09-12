@@ -20,8 +20,8 @@
   <body>
     <div class="header">
       <h1 class="title">Pomodoro</h1>
-      <!-- ↓ログアウトボタンのあるページのみ -->
-      <a href="{{ url_for('user_logout.logout') }}" class="logout">ログアウト</a>
+      <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+      <a href="{{ url_for('todo_top.todo_list') }}"class="todo_top">戻る</a>
     </div>
     <div class="content">
       <div class="sub-title">実行中のToDo</div>
@@ -92,7 +92,6 @@
       </div>
 
       <div class="button flex">
-        <a href="{{ url_for('todo_top.todo_list') }}" class="cancel">中断</a>
         <button class="finish-btn" onclick="finishBtn()">完了</button>
       </div>
     </div>
