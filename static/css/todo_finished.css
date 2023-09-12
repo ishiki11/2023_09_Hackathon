@@ -4,26 +4,21 @@ body {
   margin: 0;
 }
 
-/* ユーザネーム */
-.user-name {
+/* 完了したToDo一覧 */
+.subtitle {
   text-align: center;
   font-size: 1.5rem;
-  margin-top: 2rem;
-}
-
-/* 中身 */
-.content {
   margin-top: 5vh;
-  display: flex;
-  justify-content: center;
-  font-size: 1rem;
-  height: 70vh;
 }
 
 /* スクロール可能なコンテナのスタイル */
 .scrollable-container {
   max-height: 60vh; /* コンテナの最大高さを設定 */
   overflow-y: auto; /* 縦方向のスクロールバーを表示 */
+  /* 中央寄せ */
+  margin-top: 5vh;
+  display: flex;
+  justify-content: center;
 }
 
 /* todoタスク名 */
@@ -31,7 +26,7 @@ body {
   text-align: center;
   font-size: 2rem;
 }
-/* todoリスト */
+/* table */
 .todo-list {
   width: 75vw;
   border-spacing: 0;
@@ -131,52 +126,9 @@ body {
 .not-todo {
   width: 50vw;
   font-size: 2rem;
+  text-align: center;
   display: flex;
   flex-direction: column;
+  margin: auto;
   margin-top: 20vh;
-}
-
-/* 右側のリンク */
-.column {
-  width: 15vw;
-  display: flex;
-  flex-direction: column;
-}
-.a-tag {
-  font-size: 1.4rem;
-  margin-left: auto;
-  text-decoration: none;
-  color: black;
-  display: inline-block;
-  width: fit-content;
-}
-.a-tag::after {
-  position: relative;
-  bottom: 1px; /*　線の位置を設定できる */
-  content: ''; /* :hover::after呼び出す */
-  display: block;
-  width: 0;
-  transition: width 0.3s; /*width 0~:hoverのwidthに0.3sで遷移*/
-  border-bottom: 2px solid black;
-  /* margin: 0 auto; で中央から外側に線を引く */
-  margin-left: auto;
-}
-.a-tag:hover::after {
-  width: 100%;
-}
-/* todoの作成 */
-.todo_register {
-  display: inline;
-  width: fit-content;
-  margin-left: auto;
-  margin-top: 5vh;
-  background-color: #d9d9d9;
-  color: black;
-  font-size: 1.5rem;
-  padding: 1.5rem 1.5rem;
-  border-radius: 1rem;
-  text-decoration: none;
-}
-.todo_register:hover {
-  background-color: #c9c9c9;
 }

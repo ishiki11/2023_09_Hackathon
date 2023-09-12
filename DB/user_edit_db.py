@@ -29,65 +29,58 @@ def get_hash(pw, salt):
   return hashed_password
 
 
-# 1件のユーザを新規登録
-def insert_user(mail, pw, username):
-  sql = 'INSERT INTO Users VALUES (default, %s, %s, %s, %s, 0, 0)'
-
-  salt = get_salt()  # ソルトの生成
-  hashed_password = get_hash(pw, salt)  # 生成したソルトでハッシュ
-
-  try:  # 例外処理
-    print("#insert_user")
-    connection = get_connection()
-    cursor = connection.cursor()
-    cursor.execute(sql, (mail, hashed_password, salt, username, ))
-    count = cursor.rowcount  # 更新件数を取得
-    connection.commit()
-
-  except psycopg2.DatabaseError as e:  # Java でいうcatch 失敗した時の処理をここに書く
-    print(e)
-    count = 0  # 例外が発生したら0 をreturn する。
-
-  finally:  # 成功しようが、失敗しようが、close する。
-    cursor.close()
-    connection.close()
-
-  return count
-
-
-def insert_user_music(user_id):
-  sql = 'INSERT INTO Usermusic VALUES (default, 1, %s),(default, 2, %s),(default, 3, %s)'
-
-  try:  # 例外処理
-    connection = get_connection()
-    cursor = connection.cursor()
-    cursor.execute(sql, (user_id, user_id, user_id,))
-    connection.commit()
-
-  except psycopg2.DatabaseError as e:  # Java でいうcatch 失敗した時の処理をここに書く
-    print(e)
-
-  finally:  # 成功しようが、失敗しようが、close する。
-    cursor.close()
-    connection.close()
-
-
-def select_user(mail):
-  id = None
-  sql = 'SELECT id from users where mail= %s'
+# idが一致するuserデータ取得
+def id_select_user(user_id):
+  sql = 'SELECT * FROM Users where id = %s'
   try:
-
     connection = get_connection()
     cursor = connection.cursor()
-    cursor.execute(sql, (mail,))
+    cursor.execute(sql, (user_id,))
     user = cursor.fetchone()
-    if user:
-      id = user[0]
-
   except psycopg2.DatabaseError as e:  # Java でいうcatch 失敗した時の処理をここに書く
     print(e)
-
   finally:  # 成功しようが、失敗しようが、close する。
     cursor.close()
     connection.close()
-  return id
+    return user
+
+
+# ユーザ編集 名前、メール変更
+def update_user(user_id, mail, username):
+  sql = 'UPDATE Users SET mail = %s, username = %s WHERE id = %s'
+  flg = False
+
+  try:
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(sql, (mail, username, user_id,))
+    connection.commit()
+  except psycopg2.DatabaseError as e:
+    print(e)
+  finally:
+    flg = True
+    cursor.close()
+    connection.close()
+    return flg
+
+
+# ユーザ編集 パスワード
+def update_password(user_id, pw):
+  sql = 'UPDATE Users SET hashed_password = %s, salt = %s WHERE id = %s'
+  flg = False
+
+  salt = get_salt()
+  hashed_password = get_hash(pw, salt)
+
+  try:
+    connection = get_connection()
+    cursor = connection.cursor()
+    cursor.execute(sql, (hashed_password, salt, user_id,))
+    connection.commit()
+  except psycopg2.DatabaseError as e:
+    print(e)
+  finally:
+    flg = True
+    cursor.close()
+    connection.close()
+    return flg
