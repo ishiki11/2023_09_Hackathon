@@ -66,10 +66,10 @@ body {
   text-align: center;
 }
 .hight {
-  background-color: #95d2ff;
+  background-color: #ff9595;
 }
 .mid {
-  background-color: #ff9595;
+  background-color: #95d2ff;
 }
 .low {
   background-color: #96ffa6;
@@ -87,17 +87,6 @@ body {
   align-items: center;
   justify-content: space-around;
 }
-.work-text,
-.break-text {
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-.work-text {
-  color: #0c24ff;
-}
-.break-text {
-  color: #27d038;
-}
 
 /* 実行、編集 */
 .td3 {
@@ -113,13 +102,16 @@ body {
 }
 .td3-a {
   text-decoration: none;
+  width: fit-content;
+  height: 100%;
   color: black;
   padding: 0.2rem 0.8rem;
   border-radius: 5rem;
-  background-color: #d9d9d9;
+  border-radius: 50%;
+  background-color: #ffa012;
 }
 .td3-a:hover {
-  background-color: #c9c9c9;
+  background-color: #fdd4a5;
 }
 
 /* todoがなかった時 */
