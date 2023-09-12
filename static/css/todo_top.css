@@ -180,7 +180,7 @@ body {
   width: fit-content;
   margin-left: auto;
   margin-top: 5vh;
-  background-color: #e1ff00;
+  background-color: #00ff37;
   color: black;
   font-size: 1.5rem;
   padding: 1.5rem 1.5rem;
@@ -188,5 +188,5 @@ body {
   text-decoration: none;
 }
 .todo_register:hover {
-  background-color: #effac2;
+  background-color: #afffc0;
 }
