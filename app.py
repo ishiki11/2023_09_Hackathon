@@ -11,6 +11,8 @@ from views.login import login
 from views.todo_edit import todo_edit
 from views.plize_list import plize_list
 from views.todo_finished import todo_finished
+from views.password_edit import password_edit
+from views.user_ranking import ranking
 # 関数のインポート
 import string
 import random
@@ -18,18 +20,20 @@ import random
 app = Flask(__name__)
 app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 
-# Blueprintの利用
-app.register_blueprint(user_register)
-app.register_blueprint(todo_top)
-app.register_blueprint(todo_reg)
-app.register_blueprint(todo_edit)
-app.register_blueprint(plize_list)
-app.register_blueprint(user_edit)
-app.register_blueprint(user_logout)
-app.register_blueprint(todo_act)
-app.register_blueprint(login)
-app.register_blueprint(todo_finished)
 
+# 利用者auth
+app.register_blueprint(user_edit)  # ユーザ編集
+app.register_blueprint(password_edit)  # パスワード編集
+app.register_blueprint(user_logout)  # ログアウト
+app.register_blueprint(user_register)  # 新規登録
+app.register_blueprint(todo_top)  # todo一覧
+app.register_blueprint(todo_act)  # todo実行
+app.register_blueprint(todo_reg)  # todo登録
+app.register_blueprint(login)  # ログイン
+app.register_blueprint(todo_edit)  # todo編集
+app.register_blueprint(todo_finished)  # todo完了
+app.register_blueprint(ranking)
+app.register_blueprint(plize_list)
 
 
 # セッションを初期化
