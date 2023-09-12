@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>購入ページ</title>
+    <link rel="stylesheet" href="../static/css/plize_list.css">
+    <link rel="stylesheet" href="static/css/header.css">
+</head>
+<body>
+    <div class="header">
+        <h1 class="title">Pomodoro</h1>
+        <a href="{{ url_for('user_logout.logout') }}" class="logout">ログアウト</a>
+        <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+        <a href="{{ url_for('todo_top.todo_list') }}"class="todo_top">戻る</a>
+    </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+    rel="stylesheet"
+    />
+    {% if message != null %}
+    <p style="color: red" class="error">{{session.pop('message', '')}}</p>
+    {% endif %}
+    <div class = "point"><p>現在のポイント: {{ user_points }}</p></div>
+
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <th>ポイント</th>
+            <th>再生</th>
+        </tr>
+        {% for music in unowned_music %}
+            <tr>
+                <td>{{ music[1] }}</td>
+                <td>{{ music[3] }}</td>
+                <td>
+                    <audio controls>
+                        <source src="{{ music[2] }}" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                    <form method="POST" action="/purchase/{{ music[0] }}">
+                        <button type="submit">購入</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
