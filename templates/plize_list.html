@@ -5,7 +5,10 @@
     <link rel="stylesheet" href="../static/css/plize_list.css">
 </head>
 <body>
-    <h1>購入できる音楽</h1>
+    <h1>ポイントショップ</h1>
+    {% if error != null %}
+    <p style="color: red" class="error">{{error}}</p>
+    {% endif %}
     <table>
         <tr>
             <th>タイトル</th>
@@ -21,6 +24,9 @@
                         <source src="{{ music[2] }}" type="audio/mpeg">
                         Your browser does not support the audio element.
                     </audio>
+                    <form method="POST" action="/purchase/{{ music[0] }}">
+                        <button type="submit">購入</button>
+                    </form>
                 </td>
             </tr>
         {% endfor %}

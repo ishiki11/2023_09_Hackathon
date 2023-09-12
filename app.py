@@ -19,22 +19,17 @@ app = Flask(__name__)
 app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 
 # Blueprintの利用
-app.register_blueprint(auth)
 app.register_blueprint(user_register)
 app.register_blueprint(todo_top)
 app.register_blueprint(todo_reg)
 app.register_blueprint(todo_edit)
 app.register_blueprint(plize_list)
-# 利用者auth
 app.register_blueprint(user_edit)
 app.register_blueprint(user_logout)
-app.register_blueprint(user_register)  # 新規登録
-app.register_blueprint(todo_top)  # todo一覧
-app.register_blueprint(todo_act)  # todo実行
-app.register_blueprint(todo_reg)  # todo登録
-app.register_blueprint(login)  # ログイン
-app.register_blueprint(todo_edit)  # todo編集
-app.register_blueprint(todo_finished)  # todo完了
+app.register_blueprint(todo_act)
+app.register_blueprint(login)
+app.register_blueprint(todo_finished)
+
 
 
 # セッションを初期化

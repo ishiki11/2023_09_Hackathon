@@ -2,11 +2,26 @@ table {
   width: 100%;
   border-collapse: collapse;
 }
+
 th, td {
   border: 1px solid #dddddd;
   text-align: left;
   padding: 8px;
 }
+
 th {
   background-color: #f2f2f2;
+}
+
+/* 追加したCSSコード */
+td audio {
+  display: inline-block; /* audio要素をインラインブロックに変更 */
+  vertical-align: middle; /* 垂直方向の中央揃え */
+  margin-right: 10px; /* ボタンとの間に余白を追加 */
+}
+
+td form {
+  display: inline-block; /* form要素をインラインブロックに変更 */
+  vertical-align: middle; /* 垂直方向の中央揃え */
+  margin-left: 10px; /* ボタンとの間に余白を追加 */
 }
