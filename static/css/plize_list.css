@@ -1,6 +1,7 @@
 table {
-  width: 100%;
+  width: 60%;
   border-collapse: collapse;
+  margin: auto;
 }
 
 th, td {
@@ -13,7 +14,12 @@ th {
   background-color: #f2f2f2;
 }
 
-/* 追加したCSSコード */
+/* ポイント表示とボタンのスタイル */
+td p {
+  font-weight: bold; /* ポイント表示を太字にする */
+  margin-bottom: 10px; /* ポイント表示の下に余白を追加 */
+}
+
 td audio {
   display: inline-block; /* audio要素をインラインブロックに変更 */
   vertical-align: middle; /* 垂直方向の中央揃え */
@@ -24,4 +30,22 @@ td form {
   display: inline-block; /* form要素をインラインブロックに変更 */
   vertical-align: middle; /* 垂直方向の中央揃え */
   margin-left: 10px; /* ボタンとの間に余白を追加 */
+}
+/* 完了ボタン */
+button {
+  background-color: #d9d9d9;
+  border: none;
+  border-radius: 5rem;
+  padding: 0.5vh 5vw;
+  /* 文字設定 */
+  color: black;
+  font-size: 1.5rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+  text-decoration: none;
+}
+div.point {
+  text-align: center;
+  
 }

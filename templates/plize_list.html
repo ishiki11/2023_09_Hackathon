@@ -3,12 +3,26 @@
 <head>
     <title>購入ページ</title>
     <link rel="stylesheet" href="../static/css/plize_list.css">
+    <link rel="stylesheet" href="static/css/header.css">
 </head>
 <body>
-    <h1>ポイントショップ</h1>
-    {% if error != null %}
-    <p style="color: red" class="error">{{error}}</p>
+    <div class="header">
+        <h1 class="title">Pomodoro</h1>
+        <a href="{{ url_for('user_logout.logout') }}" class="logout">ログアウト</a>
+        <!-- ↓ログイン後ページの戻るボタンのついているページのみ(遷移先todo_top) -->
+        <a href="{{ url_for('todo_top.todo_list') }}"class="todo_top">戻る</a>
+    </div>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+    href="https://fonts.googleapis.com/css2?family=Italianno&display=swap"
+    rel="stylesheet"
+    />
+    {% if message != null %}
+    <p style="color: red" class="error">{{message}}</p>
     {% endif %}
+    <div class = "point"><p>現在のポイント: {{ user_points }}</p></div>
+
     <table>
         <tr>
             <th>タイトル</th>

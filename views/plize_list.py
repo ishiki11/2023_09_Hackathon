@@ -108,15 +108,19 @@ def get_unowned_music(user_id):
 
 @plize_list.route('/purchase')
 def purchase_music_view():
-    # ユーザーIDを適切に取得する方法に置き換えてください
-    user_id = 1  # ダミーユーザーID、実際のユーザーIDに置き換えてください
+    user_id = session.get('id')
+    if user_id is None:
+        return redirect('/')
+    user_points = get_user_points(user_id)
+    if "message" in session:
+        message = session["message"]
+    else:
+        message = ""
 
     # ユーザーが所有していない音楽を取得
     unowned_music = get_unowned_music(user_id)
 
-    return render_template('plize_list.html', unowned_music=unowned_music)
-
-# ... 他のコード ...
+    return render_template('plize_list.html', unowned_music=unowned_music,user_points=user_points, message=message)
 
 @plize_list.route('/purchase/<int:music_id>', methods=['POST'])
 def purchase_music(music_id):
@@ -126,9 +130,6 @@ def purchase_music(music_id):
     if user_id is None:
         return redirect('/')
 
-    # ユーザーの現在のポイントを取得
-    user_points = get_user_points(user_id)
-
     # 音楽の価格を取得
     music_price = get_music_price(music_id)  # 適切な関数を作成して音楽の価格を取得してください
 
@@ -137,7 +138,10 @@ def purchase_music(music_id):
 
     # ユーザーが既にその音楽を所有しているかチェック
     if check_user_owns_music(user_id, music_id):
-        return "既にこの音楽を所有しています。"  # エラーメッセージを返す
+        session["message"]="既に所有している音楽です"
+        return redirect((url_for('plize_list.purchase_music_view')))
+        # ユーザーの現在のポイントを取得
+    user_points = get_user_points(user_id)
 
     # ユーザーのポイントが音楽の価格以上かチェック
     if user_points >= music_price:
@@ -148,10 +152,10 @@ def purchase_music(music_id):
         # UserMusicテーブルに音楽の所有情報を追加
         add_user_music(user_id, music_id)  # ユーザーが音楽を所有する関数を作成してください
 
-        # 購入が完了したらリダイレクト
-        return redirect(url_for('plize_list.purchase_music_view'))
+        session["message"] = "購入できました"
     else:
-        return render_template('plize_list.html', unowned_music=unowned_music, error="ポイントが不足しています。購入できません。" )
+        session["message"]="ポイントが不足しています"
+    return redirect(url_for('plize_list.purchase_music_view'))
 
 
     # ユーザーが所有していない音楽を取得する関数
