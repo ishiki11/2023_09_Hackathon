@@ -1,9 +1,9 @@
-# plize_list.py
+# prize_list.py
 import os
 import psycopg2
 from flask import Blueprint, render_template, request, session, redirect, url_for, redirect
 
-plize_list = Blueprint('plize_list', __name__)
+prize_list = Blueprint('prize_list', __name__)
 
 def get_music_price(music_id):
     try:
@@ -106,7 +106,7 @@ def get_unowned_music(user_id):
         print(e)
         return []
 
-@plize_list.route('/purchase')
+@prize_list.route('/purchase')
 def purchase_music_view():
     user_id = session.get('id')
     if user_id is None:
@@ -120,9 +120,9 @@ def purchase_music_view():
     # ユーザーが所有していない音楽を取得
     unowned_music = get_unowned_music(user_id)
 
-    return render_template('plize_list.html', unowned_music=unowned_music,user_points=user_points, message=message)
+    return render_template('prize_list.html', unowned_music=unowned_music,user_points=user_points, message=message)
 
-@plize_list.route('/purchase/<int:music_id>', methods=['POST'])
+@prize_list.route('/purchase/<int:music_id>', methods=['POST'])
 def purchase_music(music_id):
     # ユーザーIDを適切に取得する方法に置き換えてください
     user_id = session.get('id')
@@ -139,7 +139,7 @@ def purchase_music(music_id):
     # ユーザーが既にその音楽を所有しているかチェック
     if check_user_owns_music(user_id, music_id):
         session["message"]="既に所有している音楽です"
-        return redirect((url_for('plize_list.purchase_music_view')))
+        return redirect((url_for('prize_list.purchase_music_view')))
         # ユーザーの現在のポイントを取得
     user_points = get_user_points(user_id)
 
@@ -154,7 +154,7 @@ def purchase_music(music_id):
 
     else:
         session["message"]="ポイントが不足しています"
-    return redirect(url_for('plize_list.purchase_music_view'))
+    return redirect(url_for('prize_list.purchase_music_view'))
 
 
     # ユーザーが所有していない音楽を取得する関数
