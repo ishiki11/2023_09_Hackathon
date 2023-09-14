@@ -27,7 +27,7 @@
     <div class="content">
       <form action="{{ url_for('todo_edit.todo_editer_exe', param=todo[0]) }}" method="post" class="form">
         <div class="form-item">ToDoの内容
-          <input type="text" placeholder="{{todo[2]}}" name="task" class="input input-task" />
+          <input type="text" value="{{todo[2]}}" name="task" class="input input-task" />
         </div>
         <div class="flex">
           <div class="form-item flex-item">
@@ -44,7 +44,7 @@
           </div>
           <div class="form-item flex-item">
             目標時間 <span class="target-text">※数字は半角で入力してください</span>
-            <input type="text" placeholder="{{todo[3]}}" name="target_time" class="input"/>
+            <input type="text" value="{{todo[3]}}" name="target_time" class="input"/>
           </div>
         </div>
 
