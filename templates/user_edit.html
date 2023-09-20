@@ -37,7 +37,7 @@
           <input
             type="text"
             name="username"
-            placeholder={{ data[4] }}
+            value={{ data[4] }}
             {% if old!=null and old[1]!="" %} value={{ old[1] }} {% endif %}
           />
         </p>
@@ -47,7 +47,7 @@
           <input
             type="email"
             name="mail"
-            placeholder={{ data[1] }}
+            value={{ data[1] }}
             {% if old!=null and old[0]!="" %} value={{ old[0] }} {% endif %}
           />
         </p>
