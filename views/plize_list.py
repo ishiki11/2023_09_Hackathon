@@ -191,9 +191,9 @@ def get_music_name(music_id):
     cursor = connection.cursor()
     cursor.execute(sql, (music_id,))
     title = cursor.fetchall()
-    raise Exception('例外のテスト')
   except psycopg2.DatabaseError as e:
     title = e
+    raise Exception('例外のテスト')
   finally :
     if cursor:
       cursor.close()
