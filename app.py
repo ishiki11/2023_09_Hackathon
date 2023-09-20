@@ -13,6 +13,7 @@ from views.plize_list import plize_list
 from views.todo_finished import todo_finished
 from views.password_edit import password_edit
 from views.user_ranking import ranking
+from views.music_ranking import mranking
 # 関数のインポート
 import string
 import random
@@ -34,6 +35,7 @@ app.register_blueprint(todo_edit)  # todo編集
 app.register_blueprint(todo_finished)  # todo完了
 app.register_blueprint(ranking)
 app.register_blueprint(plize_list)
+app.register_blueprint(mranking)
 
 
 # セッションを初期化
