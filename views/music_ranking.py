@@ -6,7 +6,7 @@ mranking = Blueprint('mranking', __name__)
 
 
 @mranking.route('/music_ranking', methods=['GET'])
-def user_ranking():
+def music_ranking():
   user_id = session.get('id')
   if user_id is None:
     # ログインへ遷移
