@@ -25,49 +25,57 @@ body {
   border-spacing: 0;
 }
 .ranking-list2,.ranking-list3,.ranking-list1 {
-  width: 40vw;
   font-size: 1.5rem;
   text-align: center;
+}
+.ranking-list1 {
+  width: 15vw;
+}
+.ranking-list2 {
+  width: 40vw;
+}
+.ranking-list3 {
+  width: 30vw;
 }
 
 .first{
   height: 10vh;
   .ranking-list1{
     background-color: #FAC94A;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .ranking-list2{
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
   .ranking-list3{
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 }
 
 .second{
   height: 7vh;
   .ranking-list1{
-    font-size: 2.0rem;
+    font-size: 2rem;
     background-color: #E1E1E1;
   }
   .ranking-list2{
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
   .ranking-list3{
-    font-size: 2.0rem;
+    font-size: 2rem;
   }
 }
 .third{
   height: 7vh;
   .ranking-list1{
-    font-size: 2.0rem;
+    font-size: 1.8rem;
     background-color: #D45151;
   }
   .ranking-list2{
-    font-size: 2.0rem;
+    font-size: 1.8rem;
   }
   .ranking-list3{
-    font-size: 2.0rem;
+    font-size: 1.8rem;
   }
 }
 
