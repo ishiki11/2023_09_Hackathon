@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- font読み込み -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter&family=Italianno&display=swap"
+      rel="stylesheet"
+    />
+    <!-- header css -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/header.css') }}"
+    />
+    <!-- ページのcss -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/admin_top.css') }}"
+    />
+    <title>ユーザ検索</title>
+  </head>
+  <body>
+    <div class="header">
+      <h1 class="title">Pomodoro</h1>
+      <a href="{{url_for('user_logout.logout')}}" class="logout">ログアウト</a>
+    </div>
+    <div>
+      <div class="search-div">
+        <label for="search">検索：</label>
+        <input type="text" name="search" id="search" class="search-input" placeholder="ユーザ名で検索することができます">
+      </div>
+      <table class="user-list">
+        <thead>
+          <tr class="user-thead">
+            <th class="user-th">ユーザ名</th>
+            <th class="mail-th">メールアドレス</th>
+            <th class="point-th">累計ポイント</th>
+            <th class="del-th">削除</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+          <tr>
+            <td class="user">{{ user[1] }}</td>
+            <td class="mail">{{ user[3] }}</td>
+            <td class="point">{{ user[2] }}</td>
+            <td class="delete">
+              <a href="{{ url_for('admin_top.user_delete', param=user[0]) }}" class="delete-a">削除</a>
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <script src="/static/js/admin_top.js"></script>
+  </body>
+</html>

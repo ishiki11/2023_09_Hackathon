@@ -1,0 +1,72 @@
+.search-div {
+  display: flex;
+  justify-content: center;
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+  align-items: center;
+  font-size: 1.3rem;
+  .search-input {
+    width: 30vw;
+    padding: 0.3rem;
+    font-size: 1.1rem;
+  }
+}
+
+.user-list {
+  margin: auto;
+  width: 75vw;
+  font-size: 1.2rem;
+  border-collapse: collapse;
+  thead {
+    font-size: 1.4rem;
+  }
+}
+td, th {
+  border-bottom: 2px solid #c86b5b;
+  border-right: 2px dotted #c86b5b;
+  padding: 0.2rem 1rem;
+}
+th{ /* 表の見出しの指定 */
+  color:#c86b5b;  
+}
+tr:first-child{  /* 最初の行の指定 */
+  border-bottom: 2px solid #c86b5b;   
+}
+tr:last-child{ /* 最後の行の指定 */
+  border-bottom: 0;
+}
+td:last-child{ /* 一番左の列の指定 */
+  border-right:0;
+}
+th:last-child{ /* 一番右の列の指定 */
+  border-right:0;
+}
+.user-thead {
+  height: 8vh;
+}
+
+.user-th {
+  width: 30%;
+}
+.mail-th {
+  width: 40%;
+}
+.point-th {
+  width: 20%;
+}
+.delete-th {
+  width: 10%;
+}
+.point {
+  text-align: right;
+}
+.delete {
+  text-align: center;
+}
+.delete-a {
+  background-color: #e0e0e0;
+  text-decoration: none;
+  border-radius: 1rem;
+  color: black;
+  padding: 0 0.4rem;
+}
