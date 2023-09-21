@@ -81,9 +81,10 @@
       </div>
       {% endif %}
       <div class="column">
-        <a class="a-tag" href="{{ url_for('ranking.user_ranking') }}">ランキング</a>
-        <a class="a-tag" href="{{ url_for('user_edit.edit') }}">ユーザー情報の編集</a>
-        <a class="a-tag" href="/purchase">ポイント交換</a>
+        <a class="a-tag" href="{{ url_for('ranking.user_ranking') }}">ユーザランキング</a>
+        <a class="a-tag" href="{{ url_for('mranking.music_ranking') }}">音楽ランキング</a>
+        <a class="a-tag" href="{{ url_for('user_edit.edit') }}">ユーザ情報の編集</a>
+        <a class="a-tag" href="{{ url_for('plize_list.purchase_music_view') }}">ポイント交換</a>
         <a class="a-tag" href="{{ url_for('todo_finished.todo_finished_list') }}">過去のToDo一覧</a>
         <a class="todo_register" href="{{ url_for('todo_reg.todo_register') }}">ToDoの作成</a>
       </div>
