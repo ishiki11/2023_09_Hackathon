@@ -189,9 +189,9 @@ def get_music_name(music_id):
     url = os.environ['DATABASE_URL']
     connection = psycopg2.connect(url)
     cursor = connection.cursor()
+    raise Exception('例外のテスト')
     cursor.execute(sql, (music_id,))
     title = cursor.fetchall()
-    raise Exception('例外のテスト')
   except Exception as e:
     title = e
   finally :
