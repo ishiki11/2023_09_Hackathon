@@ -14,6 +14,19 @@ def user_list():
   return render_template('admin_top.html', users=users)
 
 
+# 検索の処理
+@admin_top.route('/admin/top', methods=['POST'])
+def search():
+  # ユーザ名取得
+  user_name = json.loads(request.data)
+  # ユーザ検索
+  try:
+    users = db.get_search_user(user_name)
+  except Exception as e:
+    return json.dumps({"data": []})
+  return json.dumps({"data": users})
+
+
 # ユーザ削除用
 @admin_top.route('/admin/delete/<param>', methods=['GET'])
 def user_delete(param):
