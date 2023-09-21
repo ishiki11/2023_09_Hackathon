@@ -151,6 +151,12 @@ def purchase_music(music_id):
 
         # UserMusicテーブルに音楽の所有情報を追加
         add_user_music(user_id, music_id)  # ユーザーが音楽を所有する関数を作成してください
+        try:
+            music_name = get_music_name(music_id)
+        except psycopg2.DatabaseError as e:
+            print(e)
+        finally :
+            session["message"]=music_name[0][0]+"を購入しました"
 
     else:
         session["message"]="ポイントが不足しています"
@@ -175,3 +181,22 @@ def get_unowned_music(user_id):
         print(e)
         return []
 
+def get_music_name(music_id):
+  sql = "SELECT title FROM Music where id = %s"
+  connection = None
+  cursor = None
+  try:
+    url = os.environ['DATABASE_URL']
+    connection = psycopg2.connect(url)
+    cursor = connection.cursor()
+    raise Exception('例外のテスト')
+    cursor.execute(sql, (music_id,))
+    title = cursor.fetchall()
+  except Exception as e:
+    title = e
+  finally :
+    if cursor:
+      cursor.close()
+    if connection:
+      connection.close()
+  return title
