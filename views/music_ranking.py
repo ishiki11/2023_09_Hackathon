@@ -14,8 +14,8 @@ def music_ranking():
   try:
     work_ranking = workbgm_rank()
     break_ranking = breakbgm_rank()
-  except Exception as e:
-    print(e)
+  except psycopg2.DatabaseError as e:
+    return print(e)
   count = 1
   rank_num = 1
   work_rank = []
@@ -54,7 +54,7 @@ def workbgm_rank():
     cursor.execute(sql)
     myrank = cursor.fetchall()
   except psycopg2.DatabaseError as e:
-    raise Exception(e)
+    raise e
   finally:
     if cursor:
       cursor.close()
@@ -74,7 +74,7 @@ def breakbgm_rank():
     cursor.execute(sql)
     myrank = cursor.fetchall()
   except psycopg2.DatabaseError as e:
-    raise Exception(e)
+    raise e
   finally:
     if cursor:
       cursor.close()
