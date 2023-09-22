@@ -7,6 +7,9 @@ admin_top = Blueprint('admin_top', __name__)
 # トップ画面表示
 @admin_top.route('/admin/top', methods=['GET'])
 def user_list():
+  admin_id = session.get('admin_id')
+  if admin_id is None:
+    return redirect('/admin')
   try:
     users = db.get_users()
   except Exception as e:
@@ -17,6 +20,9 @@ def user_list():
 # 検索の処理
 @admin_top.route('/admin/top', methods=['POST'])
 def search():
+  admin_id = session.get('admin_id')
+  if admin_id is None:
+    return redirect('/admin')
   # ユーザ名取得
   user_name = json.loads(request.data)
   # ユーザ検索
@@ -30,6 +36,9 @@ def search():
 # ユーザ削除用
 @admin_top.route('/admin/delete/<param>', methods=['GET'])
 def user_delete(param):
+  admin_id = session.get('admin_id')
+  if admin_id is None:
+    return redirect('/admin')
   if param is None:
     return redirect('/admin/top')
   user_id = param
@@ -38,3 +47,9 @@ def user_delete(param):
   except Exception as e:
     print("Exception", e)
   return redirect('/admin/top')
+
+
+@admin_top.route('/admin/logout', methods=['GET'])
+def logout():
+  session.pop('admin_id', None)
+  return redirect('/admin')
