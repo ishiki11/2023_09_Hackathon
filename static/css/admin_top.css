@@ -17,6 +17,7 @@
   width: 75vw;
   font-size: 1.2rem;
   border-collapse: collapse;
+  margin-bottom: 5vh;
   thead {
     font-size: 1.4rem;
   }
@@ -27,7 +28,7 @@ td, th {
   padding: 0.2rem 1rem;
 }
 th{ /* 表の見出しの指定 */
-  color:#c86b5b;  
+  color:#c86b5b;
 }
 tr:first-child{  /* 最初の行の指定 */
   border-bottom: 2px solid #c86b5b;   
