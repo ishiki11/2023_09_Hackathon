@@ -13,6 +13,7 @@ from views.plize_list import plize_list
 from views.todo_finished import todo_finished
 from views.password_edit import password_edit
 from views.user_ranking import ranking
+from views.admin_top import admin_top
 # 関数のインポート
 import string
 import random
@@ -22,18 +23,19 @@ app.secret_key = ''.join(random.choices(string.ascii_letters, k=256))
 
 
 # 利用者auth
-app.register_blueprint(user_edit)  # ユーザ編集
-app.register_blueprint(password_edit)  # パスワード編集
-app.register_blueprint(user_logout)  # ログアウト
-app.register_blueprint(user_register)  # 新規登録
-app.register_blueprint(todo_top)  # todo一覧
-app.register_blueprint(todo_act)  # todo実行
-app.register_blueprint(todo_reg)  # todo登録
-app.register_blueprint(login)  # ログイン
-app.register_blueprint(todo_edit)  # todo編集
-app.register_blueprint(todo_finished)  # todo完了
-app.register_blueprint(ranking)
-app.register_blueprint(plize_list)
+app.register_blueprint(user_edit)       # ユーザ編集
+app.register_blueprint(password_edit)   # パスワード編集
+app.register_blueprint(user_logout)     # ログアウト
+app.register_blueprint(user_register)   # 新規登録
+app.register_blueprint(todo_top)        # todo一覧
+app.register_blueprint(todo_act)        # todo実行
+app.register_blueprint(todo_reg)        # todo登録
+app.register_blueprint(login)           # ログイン
+app.register_blueprint(todo_edit)       # todo編集
+app.register_blueprint(todo_finished)   # todo完了
+app.register_blueprint(ranking)         # ランキング
+app.register_blueprint(plize_list)      # 商品交換
+app.register_blueprint(admin_top)       # 管理者トップ画面
 
 
 # セッションを初期化
